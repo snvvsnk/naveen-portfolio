@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Naveen Kumar Gundu — Senior Software Engineer & Tech Lead</title>
+<meta name="description" content="Naveen Kumar Gundu — Senior Software Engineer & Tech Lead. Distributed systems, catalog & search infrastructure, applied AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0a0f1a;
+    --bg-2: #0d1420;
+    --panel: #101827;
+    --panel-2: #0c1320;
+    --border: #22304d;
+    --border-soft: rgba(140,160,191,0.14);
+    --grid-line: rgba(140,160,191,0.06);
+    --text: #e9edf5;
+    --text-dim: #93a4c2;
+    --text-faint: #5d6c8a;
+    --ok: #35d399;
+    --ok-dim: rgba(53,211,153,0.14);
+    --warn: #ffb454;
+    --warn-dim: rgba(255,180,84,0.14);
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
+    --sans: 'IBM Plex Sans', system-ui, sans-serif;
+    --maxw: 1040px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+
+  body{
+    margin:0;
+    background:
+      linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / 100% 42px,
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 42px 100%,
+      radial-gradient(1100px 520px at 50% -10%, #101d33 0%, var(--bg) 60%),
+      var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:inherit; }
+  :focus-visible{ outline:2px solid var(--ok); outline-offset:3px; border-radius:3px; }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
+
+  /* ---------- Top bar ---------- */
+  header.topbar{
+    position:sticky; top:0; z-index:50;
+    background:rgba(10,15,26,0.86);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--border-soft);
+  }
+  .topbar-inner{
+    max-width:var(--maxw); margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+  .brand{
+    font-family:var(--mono); font-weight:600; font-size:14px; letter-spacing:0.02em;
+    display:flex; align-items:center; gap:10px; text-decoration:none;
+  }
+  .brand .dot{ width:8px; height:8px; border-radius:50%; background:var(--ok); box-shadow:0 0 0 3px var(--ok-dim); }
+  nav.mainnav{ display:flex; gap:22px; }
+  nav.mainnav a{
+    font-family:var(--mono); font-size:12.5px; text-decoration:none; color:var(--text-dim);
+    letter-spacing:0.03em; text-transform:uppercase;
+  }
+  nav.mainnav a:hover{ color:var(--text); }
+  .status-pill{
+    font-family:var(--mono); font-size:11.5px; color:var(--ok);
+    border:1px solid rgba(53,211,153,0.35); background:var(--ok-dim);
+    padding:5px 10px; border-radius:20px; display:flex; align-items:center; gap:7px;
+    white-space:nowrap;
+  }
+  .status-pill .pulse{
+    width:6px; height:6px; border-radius:50%; background:var(--ok);
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse{ 0%,100%{ opacity:1; transform:scale(1);} 50%{ opacity:0.35; transform:scale(0.7);} }
+  @media (max-width: 720px){ nav.mainnav{ display:none; } }
+
+  /* ---------- Section shell ---------- */
+  section{ padding:74px 0; border-bottom:1px solid var(--border-soft); }
+  section:last-of-type{ border-bottom:none; }
+  .eyebrow{
+    font-family:var(--mono); font-size:12px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--ok); margin:0 0 10px;
+  }
+  .eyebrow::before{ content:"// "; color:var(--text-faint); }
+  h2{
+    font-family:var(--mono); font-size:26px; font-weight:600; margin:0 0 30px; color:var(--text);
+    letter-spacing:-0.01em;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding-top:64px; }
+  .hero-grid{ display:grid; grid-template-columns:1.25fr 0.95fr; gap:40px; align-items:start; }
+  @media (max-width:860px){ .hero-grid{ grid-template-columns:1fr; } }
+
+  .kicker{
+    font-family:var(--mono); font-size:12.5px; color:var(--text-dim); letter-spacing:0.08em;
+    text-transform:uppercase; margin:0 0 18px; display:flex; align-items:center; gap:10px;
+  }
+  .kicker::before{ content:"["; color:var(--text-faint); }
+  .kicker::after{ content:"]"; color:var(--text-faint); }
+
+  h1{
+    font-family:var(--sans); font-weight:700; font-size:44px; line-height:1.12; margin:0 0 18px;
+    letter-spacing:-0.02em;
+  }
+  h1 .accent{ color:var(--ok); }
+  @media (max-width:560px){ h1{ font-size:32px; } }
+
+  .hero-desc{ color:var(--text-dim); font-size:16.5px; max-width:52ch; margin:0 0 30px; }
+
+  .cta-row{ display:flex; gap:12px; flex-wrap:wrap; }
+  .btn{
+    font-family:var(--mono); font-size:13px; text-decoration:none; padding:11px 18px;
+    border-radius:6px; border:1px solid var(--border); letter-spacing:0.02em; transition:all .15s ease;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn.primary{ background:var(--ok); color:#06140f; border-color:var(--ok); font-weight:600; }
+  .btn.primary:hover{ background:#4ee0ac; }
+  .btn.ghost{ color:var(--text); }
+  .btn.ghost:hover{ border-color:var(--text-dim); background:rgba(255,255,255,0.03); }
+
+  /* Status panel (signature element) */
+  .statuspanel{
+    background:var(--panel); border:1px solid var(--border); border-radius:10px; overflow:hidden;
+    position:relative;
+  }
+  .statuspanel::before{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background: linear-gradient(180deg, rgba(53,211,153,0.05), transparent 40%);
+  }
+  .statuspanel-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 16px; border-bottom:1px solid var(--border-soft);
+    font-family:var(--mono); font-size:11.5px; color:var(--text-faint); letter-spacing:0.04em;
+  }
+  .statuspanel-head .lights{ display:flex; gap:6px; }
+  .statuspanel-head .lights span{ width:8px; height:8px; border-radius:50%; background:var(--border); }
+  .statuspanel-body{ padding:18px 16px 20px; }
+  .metric-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:10px 0; border-bottom:1px dashed var(--border-soft); font-family:var(--mono);
+  }
+  .metric-row:last-child{ border-bottom:none; }
+  .metric-label{ font-size:12px; color:var(--text-dim); }
+  .metric-value{ font-size:15px; color:var(--text); font-weight:600; }
+  .metric-value.ok{ color:var(--ok); }
+  .metric-value.warn{ color:var(--warn); }
+
+  /* ---------- About ---------- */
+  .about-grid{ display:grid; grid-template-columns:1.4fr 1fr; gap:40px; }
+  @media (max-width:860px){ .about-grid{ grid-template-columns:1fr; } }
+  .about-body p{ color:var(--text-dim); font-size:15.5px; margin:0 0 16px; }
+  .about-body strong{ color:var(--text); font-weight:600; }
+  .sidefacts{ display:flex; flex-direction:column; gap:0; border:1px solid var(--border); border-radius:10px; overflow:hidden; }
+  .sidefacts div{ padding:13px 16px; border-bottom:1px solid var(--border-soft); font-family:var(--mono); font-size:13px; display:flex; justify-content:space-between; gap:12px; }
+  .sidefacts div:last-child{ border-bottom:none; }
+  .sidefacts span.k{ color:var(--text-faint); }
+  .sidefacts span.v{ color:var(--text); text-align:right; }
+
+  /* ---------- Experience timeline ---------- */
+  .log{ position:relative; padding-left:26px; }
+  .log::before{ content:""; position:absolute; left:6px; top:6px; bottom:6px; width:1px; background:var(--border); }
+  .entry{ position:relative; padding-bottom:38px; }
+  .entry:last-child{ padding-bottom:0; }
+  .entry::before{
+    content:""; position:absolute; left:-26px; top:5px; width:10px; height:10px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--ok);
+  }
+  .entry.past::before{ border-color:var(--text-faint); }
+  .entry-meta{
+    font-family:var(--mono); font-size:11.5px; color:var(--text-faint); letter-spacing:0.03em;
+    margin-bottom:6px; text-transform:uppercase;
+  }
+  .entry-title{ font-size:18px; font-weight:600; color:var(--text); margin:0 0 2px; }
+  .entry-org{ font-size:14px; color:var(--ok); font-family:var(--mono); margin:0 0 12px; }
+  .entry ul{ margin:0; padding-left:18px; color:var(--text-dim); font-size:14.5px; }
+  .entry li{ margin-bottom:6px; }
+  .entry-more{
+    display:inline-block; margin-top:10px; font-family:var(--mono); font-size:11.5px; color:var(--text-faint);
+  }
+
+  /* ---------- Expertise grid ---------- */
+  .modgrid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
+  @media (max-width:860px){ .modgrid{ grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width:560px){ .modgrid{ grid-template-columns:1fr; } }
+  .mod{
+    background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:18px;
+    position:relative;
+  }
+  .mod::before, .mod::after{
+    content:""; position:absolute; width:9px; height:9px; border-color:var(--border-soft); border-style:solid; opacity:0.8;
+  }
+  .mod::before{ top:8px; left:8px; border-width:1px 0 0 1px; }
+  .mod::after{ bottom:8px; right:8px; border-width:0 1px 1px 0; }
+  .mod-head{ display:flex; align-items:center; gap:8px; margin-bottom:12px; }
+  .mod-icon{ width:7px; height:7px; border-radius:1px; background:var(--ok); transform:rotate(45deg); flex:none; }
+  .mod-title{ font-family:var(--mono); font-size:13px; color:var(--text); font-weight:600; letter-spacing:0.01em; }
+  .chips{ display:flex; flex-wrap:wrap; gap:6px; }
+  .chip{
+    font-family:var(--mono); font-size:11px; color:var(--text-dim); background:var(--panel-2);
+    border:1px solid var(--border-soft); padding:4px 8px; border-radius:5px;
+  }
+
+  /* ---------- Resumes ---------- */
+  .resumegrid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; }
+  @media (max-width:720px){ .resumegrid{ grid-template-columns:1fr; } }
+  .rescard{
+    background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:20px;
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .rescard .tag{
+    font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--warn); background:var(--warn-dim); border:1px solid rgba(255,180,84,0.3);
+    width:fit-content; padding:3px 8px; border-radius:4px;
+  }
+  .rescard h3{ margin:0; font-size:16px; color:var(--text); }
+  .rescard p{ margin:0; color:var(--text-dim); font-size:13.5px; }
+  .rescard .links{ display:flex; gap:10px; margin-top:4px; }
+  .rescard .links a{
+    font-family:var(--mono); font-size:12px; text-decoration:none; color:var(--ok);
+    border-bottom:1px solid rgba(53,211,153,0.35);
+  }
+  .rescard .links a:hover{ color:#4ee0ac; }
+
+  /* ---------- Education ---------- */
+  .edu-row{ display:flex; justify-content:space-between; gap:20px; padding:16px 0; border-bottom:1px solid var(--border-soft); flex-wrap:wrap; }
+  .edu-row:last-child{ border-bottom:none; }
+  .edu-title{ font-weight:600; color:var(--text); font-size:15px; }
+  .edu-sub{ color:var(--text-dim); font-size:13.5px; margin-top:2px; }
+  .edu-tag{ font-family:var(--mono); font-size:11px; color:var(--ok); align-self:center; }
+
+  /* ---------- Footer / contact ---------- */
+  footer{ padding:60px 0 40px; }
+  .contact-panel{
+    background:var(--panel); border:1px solid var(--border); border-radius:12px;
+    padding:34px; text-align:center;
+  }
+  .contact-panel h2{ margin-bottom:12px; }
+  .contact-panel p{ color:var(--text-dim); max-width:44ch; margin:0 auto 24px; }
+  .contact-links{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .footnote{
+    margin-top:26px; text-align:center; font-family:var(--mono); font-size:11px; color:var(--text-faint);
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top"><span class="dot"></span>NKG</a>
+    <nav class="mainnav">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#resumes">Resumes</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <span class="status-pill"><span class="pulse"></span>Open to Staff / Lead Backend roles</span>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-grid">
+      <div>
+        <p class="kicker">senior software engineer · tech lead</p>
+        <h1>Naveen Kumar Gundu builds backend systems that <span class="accent">don't page you at 2am.</span></h1>
+        <p class="hero-desc">
+          Nearly 15 years architecting distributed backend systems, catalog &amp; search infrastructure,
+          and — more recently — applied-AI tooling for tier-1 e-commerce and marketplace platforms.
+          Currently pursuing an M.S. in Artificial Intelligence at UT Austin.
+        </p>
+        <div class="cta-row">
+          <a class="btn primary" href="#resumes">View resumes ↓</a>
+          <a class="btn ghost" href="mailto:snvnaveenkumarg@gmail.com">Email me</a>
+          <a class="btn ghost" href="https://linkedin.com/in/naveen-gundu" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+      </div>
+
+      <div class="statuspanel">
+        <div class="statuspanel-head">
+          <span>system_status.log</span>
+          <span class="lights"><span></span><span></span><span></span></span>
+        </div>
+        <div class="statuspanel-body">
+          <div class="metric-row">
+            <span class="metric-label">EXPERIENCE</span>
+            <span class="metric-value ok">~15 yrs</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">AI-TOOLING CYCLE-TIME IMPACT</span>
+            <span class="metric-value ok">-80%</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">LARGEST TEAM MENTORED</span>
+            <span class="metric-value">8 engineers</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">CURRENT FOCUS</span>
+            <span class="metric-value warn">Applied AI + Platform Eng.</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">EDUCATION</span>
+            <span class="metric-value">M.S. AI · UT Austin (in progress)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="eyebrow">about</p>
+    <h2>Backend by trade, AI by recent necessity</h2>
+    <div class="about-grid">
+      <div class="about-body">
+        <p>
+          I've spent most of my career on the parts of e-commerce platforms customers never see directly —
+          <strong>catalog systems, search infrastructure, pricing pipelines, and the backend plumbing</strong>
+          that keeps millions of products indexed, priced, and discoverable. I started on Oracle ATG and Endeca,
+          led the migration of monolithic commerce systems to <strong>AWS-native microservices</strong>, and now
+          lead <strong>catalog and AI/ML integration efforts</strong> for a fashion &amp; home retail platform.
+        </p>
+        <p>
+          Over the last year, that's expanded into <strong>applied AI</strong>: fine-tuning classification models
+          on AWS SageMaker, building LLM-based ranking pipelines with OpenAI's APIs, and — most recently — leading
+          org-wide adoption of AI-assisted engineering tooling (Claude, Cursor, Copilot) that cut development
+          cycle time by <strong>80%</strong> across my team.
+        </p>
+        <p>
+          I care about systems that are boring in production — observable, well-instrumented, and easy to
+          hand off — and I like mentoring engineers into being the kind of on-call partner you actually want
+          at 2am.
+        </p>
+      </div>
+      <div class="sidefacts">
+        <div><span class="k">Based in</span><span class="v">Celina, TX</span></div>
+        <div><span class="k">Core stack</span><span class="v">Java · Python · Go</span></div>
+        <div><span class="k">Cloud</span><span class="v">AWS · GCP · K8s</span></div>
+        <div><span class="k">Domain</span><span class="v">Catalog · Search · Pricing</span></div>
+        <div><span class="k">Recent focus</span><span class="v">LLM / Applied AI</span></div>
+        <div><span class="k">Education</span><span class="v">M.S. AI, UT Austin</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="eyebrow">experience</p>
+    <h2>Where I've built things</h2>
+    <div class="log">
+
+      <div class="entry">
+        <div class="entry-meta">Jan 2026 → present</div>
+        <h3 class="entry-title">Senior Software Engineer — Lead Level</h3>
+        <p class="entry-org">Rakuten Marketing · Celina, TX</p>
+        <ul>
+          <li>Technical lead for production health across distributed marketplace systems, driving down MTTR org-wide.</li>
+          <li>Led org-wide adoption of AI-assisted engineering tooling, cutting dev cycle time by 80%.</li>
+          <li>Architected "Detect Playground," a reusable internal framework standardizing prompt-based backend development.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-meta">Mar 2021 → Dec 2025</div>
+        <h3 class="entry-title">Tech Lead / Senior Catalog Engineer</h3>
+        <p class="entry-org">Rakuten Rewards — ShopStyle.com / Collective Voice · Celina, TX</p>
+        <ul>
+          <li>Owned catalog &amp; search architecture across fashion and home retail verticals; introduced attribute schemas powering new search filters.</li>
+          <li>Directed AWS SageMaker model fine-tuning and built an OpenAI-based LLM ranking pipeline end-to-end.</li>
+          <li>Engineered high-volume MongoDB → PostgreSQL migrations and automated commission/billing-adjacent workflows.</li>
+        </ul>
+      </div>
+
+      <div class="entry past">
+        <div class="entry-meta">Feb 2016 → Feb 2021</div>
+        <h3 class="entry-title">Senior Engineer Level 2 — Site Reliability Engineering</h3>
+        <p class="entry-org">Publicis Sapient (Client: JCPenney) · Plano, TX</p>
+        <ul>
+          <li>Led migration of monolithic Oracle ATG systems to AWS-native Spring Boot microservices.</li>
+          <li>Built an internal SRE platform on Splunk, Wily, and the ELK stack, reducing MTTR across distributed apps.</li>
+          <li>Led a global team of 6 engineers (US/India) owning high-severity incident resolution under strict SLAs.</li>
+        </ul>
+      </div>
+
+      <div class="entry past">
+        <div class="entry-meta">Jan 2015 → Feb 2016</div>
+        <h3 class="entry-title">Senior ATG Developer / Team Lead</h3>
+        <p class="entry-org">Avani Technology Solutions (Client: TOMS.com) · Los Angeles, CA</p>
+        <ul>
+          <li>Designed full-stack e-commerce applications on Oracle ATG and Endeca with global i18n support.</li>
+          <li>Managed and mentored a development team of 8 engineers across the full SDLC.</li>
+        </ul>
+      </div>
+
+      <div class="entry past">
+        <div class="entry-meta">2010 → 2014</div>
+        <h3 class="entry-title">ATG Developer → Systems Engineer</h3>
+        <p class="entry-org">Sapient Consulting (JCPenney) &amp; Tata Consultancy Services (Sprint/Nextel)</p>
+        <ul>
+          <li>Multi-channel e-commerce and telecom platform development on Java/J2EE and Oracle ATG.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section id="expertise">
+    <p class="eyebrow">expertise</p>
+    <h2>Capability map</h2>
+    <div class="modgrid">
+
+      <div class="mod">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Backend &amp; Platform</span></div>
+        <div class="chips">
+          <span class="chip">Java</span><span class="chip">Python</span><span class="chip">Go</span>
+          <span class="chip">Spring Boot</span><span class="chip">Spring Cloud</span><span class="chip">GraphQL</span>
+          <span class="chip">Microservices</span>
+        </div>
+      </div>
+
+      <div class="mod">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">AI / ML Integration</span></div>
+        <div class="chips">
+          <span class="chip">LLM Integration</span><span class="chip">OpenAI</span><span class="chip">Claude</span>
+          <span class="chip">Prompt Engineering</span><span class="chip">SageMaker Fine-Tuning</span>
+        </div>
+      </div>
+
+      <div class="mod">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Cloud &amp; DevOps</span></div>
+        <div class="chips">
+          <span class="chip">AWS</span><span class="chip">GCP</span><span class="chip">Docker</span>
+          <span class="chip">Kubernetes</span><span class="chip">Terraform</span><span class="chip">CircleCI</span><span class="chip">Jenkins</span>
+        </div>
+      </div>
+
+      <div class="mod">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Search &amp; Catalog</span></div>
+        <div class="chips">
+          <span class="chip">Elasticsearch</span><span class="chip">Apache SOLR</span><span class="chip">Oracle Endeca</span>
+          <span class="chip">Relevance Tuning</span>
+        </div>
+      </div>
+
+      <div class="mod">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Data &amp; Persistence</span></div>
+        <div class="chips">
+          <span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">Cassandra</span>
+          <span class="chip">DynamoDB</span><span class="chip">Redis</span><span class="chip">Hazelcast</span>
+        </div>
+      </div>
+
+      <div class="mod">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Observability &amp; SRE</span></div>
+        <div class="chips">
+          <span class="chip">Datadog</span><span class="chip">Grafana</span><span class="chip">Splunk</span>
+          <span class="chip">Wily</span><span class="chip">ELK Stack</span><span class="chip">MTTR Reduction</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RESUMES -->
+  <section id="resumes">
+    <p class="eyebrow">downloads</p>
+    <h2>Role-tailored resumes</h2>
+    <div class="resumegrid">
+
+      <div class="rescard">
+        <span class="tag">Backend · Applied AI</span>
+        <h3>FICO — Senior/Lead Backend Engineer</h3>
+        <p>Tailored for backend + data pipeline roles integrating LLMs into production decisioning systems.</p>
+        <div class="links">
+          <a href="Naveen_Gundu_Resume_FICO.pdf" target="_blank">View PDF ↗</a>
+          <a href="Naveen_Gundu_Resume_FICO.docx" download>Download .docx</a>
+        </div>
+      </div>
+
+      <div class="rescard">
+        <span class="tag">Platform · AI Tooling</span>
+        <h3>Hims &amp; Hers — Staff Software Engineer</h3>
+        <p>Tailored for subscription/lifecycle platform work and org-wide AI-assisted engineering leadership.</p>
+        <div class="links">
+          <a href="Naveen_Gundu_Resume_HimsHers.pdf" target="_blank">View PDF ↗</a>
+          <a href="Naveen_Gundu_Resume_HimsHers.docx" download>Download .docx</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="eyebrow">credentials</p>
+    <h2>Education</h2>
+    <div class="edu-row">
+      <div>
+        <div class="edu-title">Master of Science in Artificial Intelligence</div>
+        <div class="edu-sub">University of Texas at Austin</div>
+      </div>
+      <div class="edu-tag">in progress</div>
+    </div>
+    <div class="edu-row">
+      <div>
+        <div class="edu-title">Bachelor of Technology, Computer Science &amp; Engineering</div>
+        <div class="edu-sub">Jawaharlal Nehru Technological University, India</div>
+      </div>
+      <div class="edu-tag">2010</div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="contact-panel">
+      <p class="eyebrow" style="justify-content:center; display:flex;">get in touch</p>
+      <h2>Let's talk about your backend problems.</h2>
+      <p>Open to Staff / Senior / Lead backend and applied-AI platform roles. Response SLA: under 24 hours.</p>
+      <div class="contact-links">
+        <a class="btn primary" href="mailto:snvnaveenkumarg@gmail.com">snvnaveenkumarg@gmail.com</a>
+        <a class="btn ghost" href="tel:+12485504360">+1 (248) 550-4360</a>
+        <a class="btn ghost" href="https://linkedin.com/in/naveen-gundu" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </div>
+    <p class="footnote">© Naveen Kumar Gundu · Celina, TX</p>
+  </div>
+</footer>
+
+</body>
+</html>
