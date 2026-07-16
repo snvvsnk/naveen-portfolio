@@ -216,6 +216,23 @@
     border:1px solid var(--border-soft); padding:4px 8px; border-radius:5px;
   }
 
+  /* ---------- Certifications ---------- */
+  .certgrid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; }
+  @media (max-width:720px){ .certgrid{ grid-template-columns:1fr; } }
+  .certcard{
+    background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:18px;
+    position:relative;
+  }
+  .certcard::before, .certcard::after{
+    content:""; position:absolute; width:9px; height:9px; border-color:var(--border-soft); border-style:solid; opacity:0.8;
+  }
+  .certcard::before{ top:8px; left:8px; border-width:1px 0 0 1px; }
+  .certcard::after{ bottom:8px; right:8px; border-width:0 1px 1px 0; }
+  .certcard .mod-head{ display:flex; align-items:center; gap:8px; margin-bottom:14px; }
+  .certlist{ display:flex; flex-direction:column; gap:13px; }
+  .certitem .cname{ font-size:13.5px; color:var(--text); font-weight:600; line-height:1.35; }
+  .certitem .cmeta{ font-family:var(--mono); font-size:11px; color:var(--text-faint); margin-top:3px; letter-spacing:0.02em; }
+
   /* ---------- Resumes ---------- */
   .resumegrid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; }
   @media (max-width:720px){ .resumegrid{ grid-template-columns:1fr; } }
@@ -267,7 +284,7 @@
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
       <a href="#expertise">Expertise</a>
-      <!-- <a href="#resumes">Resumes</a> -->
+      <a href="#certifications">Certifications</a>
       <a href="#contact">Contact</a>
     </nav>
     <span class="status-pill"><span class="pulse"></span>Open to Staff / Lead Backend roles</span>
@@ -480,7 +497,121 @@
     </div>
   </section>
 
-  <!-- RESUMES 
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <p class="eyebrow">credentials</p>
+    <h2>Certifications</h2>
+    <div class="certgrid">
+
+      <div class="certcard">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Applied AI &amp; Machine Learning</span></div>
+        <div class="certlist">
+          <div class="certitem">
+            <div class="cname">AI in Healthcare</div>
+            <div class="cmeta">University of Texas at Austin · May 2026</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Claude Code in Action</div>
+            <div class="cmeta">Anthropic · Mar 2026</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Ethics in AI</div>
+            <div class="cmeta">University of Texas at Austin · Jan 2026</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Advances in Deep Learning</div>
+            <div class="cmeta">University of Texas at Austin · May 2025</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Deep Learning</div>
+            <div class="cmeta">University of Texas at Austin · Dec 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="certcard">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Cloud Infrastructure (GCP)</span></div>
+        <div class="certlist">
+          <div class="certitem">
+            <div class="cname">Cloud Engineering with Google Cloud Specialization</div>
+            <div class="cmeta">Coursera · May 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Preparing for the Google Cloud Associate Cloud Engineer Exam</div>
+            <div class="cmeta">Coursera · May 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Elastic Google Cloud Infrastructure: Scaling and Automation</div>
+            <div class="cmeta">Coursera · Apr 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Essential Google Cloud Infrastructure: Core Services</div>
+            <div class="cmeta">Coursera · Apr 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Essential Google Cloud Infrastructure: Foundation</div>
+            <div class="cmeta">Coursera · Apr 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Google Cloud Platform Fundamentals: Core Infrastructure</div>
+            <div class="cmeta">Coursera · Apr 2020</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="certcard">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Backend Architecture &amp; Data</span></div>
+        <div class="certlist">
+          <div class="certitem">
+            <div class="cname">Reactive Architecture: Domain-Driven Design - Level 2</div>
+            <div class="cmeta">Akka · Jun 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Reactive Architecture: Introduction to Reactive Systems - Level 2</div>
+            <div class="cmeta">Akka · May 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Principles of Reactive Architecture</div>
+            <div class="cmeta">IBM · Apr 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Spark - Level 1</div>
+            <div class="cmeta">IBM · May 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Docker Essentials: A Developer Introduction</div>
+            <div class="cmeta">IBM · May 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">JDK 8: Lambdas and Streams Introduction</div>
+            <div class="cmeta">Oracle · May 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Neo4j Certified Professional</div>
+            <div class="cmeta">Neo4j · Oct 2019</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Spring Boot 2 Essential Training</div>
+            <div class="cmeta">Lynda.com · Jul 2019</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="certcard">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Front-End</span></div>
+        <div class="certlist">
+          <div class="certitem">
+            <div class="cname">Learning React.js</div>
+            <div class="cmeta">Lynda.com · Jun 2019</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RESUMES
+
   <section id="resumes">
     <p class="eyebrow">downloads</p>
     <h2>Role-tailored resumes</h2>
@@ -508,6 +639,7 @@
 
     </div>
   </section>
+
   -->
 
   <!-- EDUCATION -->
