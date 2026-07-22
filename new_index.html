@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Naveen Kumar Gundu — Senior Software Engineer & Tech Lead</title>
+<meta name="description" content="Naveen Kumar Gundu — Senior Software Engineer & Tech Lead. Distributed systems, catalog & search infrastructure, applied AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f4f0;
+    --surface: #ffffff;
+    --border: #0f172a;
+    --text: #0f172a;
+    --text-dim: #334155;
+    --text-faint: #64748b;
+    --accent-lime: #d9f99d;
+    --accent-yellow: #fef08a;
+    --accent-blue: #bae6fd;
+    --accent-orange: #ffedd5;
+    --ok: #059669;
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
+    --sans: 'Space Grotesk', system-ui, sans-serif;
+    --maxw: 1040px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: 60px;
+  }
+
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--border); outline-offset: 3px; }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Top bar ---------- */
+  header.topbar {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--bg);
+    border-bottom: 3px solid var(--border);
+    margin-bottom: 40px;
+  }
+  .topbar-inner {
+    max-width: var(--maxw); margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .brand {
+    font-family: var(--mono); font-weight: 700; font-size: 15px; letter-spacing: 0.02em;
+    display: flex; align-items: center; gap: 10px; text-decoration: none;
+    background: var(--accent-lime); border: 2px solid var(--border);
+    box-shadow: 2px 2px 0px var(--border); padding: 4px 10px;
+  }
+  .brand .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); }
+  nav.mainnav { display: flex; gap: 18px; }
+  nav.mainnav a {
+    font-family: var(--mono); font-size: 12.5px; font-weight: 700; text-decoration: none; color: var(--text);
+    letter-spacing: 0.03em; text-transform: uppercase;
+  }
+  nav.mainnav a:hover { text-decoration: underline; }
+  .status-pill {
+    font-family: var(--mono); font-size: 11.5px; font-weight: 700; color: var(--text);
+    border: 2px solid var(--border); background: var(--accent-yellow);
+    box-shadow: 2px 2px 0px var(--border);
+    padding: 5px 12px; display: flex; align-items: center; gap: 7px;
+    white-space: nowrap;
+  }
+  .status-pill .pulse {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--ok);
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.7); } }
+  @media (max-width: 768px) { nav.mainnav { display: none; } }
+
+  /* ---------- Neo-Brutalist Card Base ---------- */
+  .brutal-card {
+    background: var(--surface);
+    border: 3px solid var(--border);
+    box-shadow: 5px 5px 0px var(--border);
+    padding: 32px;
+    margin-bottom: 32px;
+  }
+  .brutal-card.yellow-bg { background: var(--accent-yellow); }
+  .brutal-card.blue-bg { background: var(--accent-blue); }
+  .brutal-card.lime-bg { background: var(--accent-lime); }
+
+  .eyebrow {
+    font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text); margin: 0 0 12px; display: inline-block;
+    background: var(--accent-lime); border: 2px solid var(--border); padding: 3px 8px;
+  }
+
+  h1 {
+    font-size: 38px; font-weight: 700; line-height: 1.15; margin: 0 0 18px;
+    letter-spacing: -0.02em;
+  }
+  h1 .accent { background: var(--accent-lime); padding: 0 4px; border: 2px solid var(--border); }
+  h2 {
+    font-family: var(--sans); font-size: 26px; font-weight: 700; margin: 0 0 24px; color: var(--text);
+    border-bottom: 3px solid var(--border); padding-bottom: 8px;
+  }
+
+  .kicker {
+    font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--text); letter-spacing: 0.08em;
+    text-transform: uppercase; margin: 0 0 16px; display: inline-block;
+    background: var(--accent-yellow); border: 2px solid var(--border); padding: 4px 8px;
+  }
+
+  .hero-desc { color: var(--text-dim); font-size: 16.5px; font-weight: 500; margin: 0 0 24px; }
+
+  /* Buttons */
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    font-family: var(--mono); font-size: 13px; font-weight: 700; text-decoration: none; padding: 10px 18px;
+    border: 2px solid var(--border); box-shadow: 3px 3px 0px var(--border);
+    letter-spacing: 0.02em; transition: all .1s ease;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn.primary { background: var(--accent-lime); color: var(--text); }
+  .btn.primary:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--border); }
+  .btn.ghost { color: var(--text); background: var(--surface); }
+  .btn.ghost:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--border); }
+
+  /* Hero Section Split Layout */
+  .hero-grid { display: grid; grid-template-columns: 1.3fr 0.9fr; gap: 24px; align-items: start; }
+  @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } }
+
+  /* Status Panel */
+  .statuspanel {
+    background: var(--surface); border: 3px solid var(--border); box-shadow: 4px 4px 0px var(--border);
+  }
+  .statuspanel-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 14px; border-bottom: 3px solid var(--border); background: var(--accent-yellow);
+    font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--text);
+  }
+  .statuspanel-head .lights { display: flex; gap: 6px; }
+  .statuspanel-head .lights span { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid var(--border); background: var(--surface); }
+  .statuspanel-body { padding: 16px; }
+  .metric-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 10px 0; border-bottom: 2px dashed var(--border); font-family: var(--mono);
+  }
+  .metric-row:last-child { border-bottom: none; }
+  .metric-label { font-size: 11.5px; font-weight: 700; color: var(--text-faint); }
+  .metric-value { font-size: 14px; color: var(--text); font-weight: 700; }
+  .metric-value.ok { background: var(--accent-lime); padding: 1px 6px; border: 1.5px solid var(--border); }
+  .metric-value.warn { background: var(--accent-orange); padding: 1px 6px; border: 1.5px solid var(--border); }
+
+  /* About Grid */
+  .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; }
+  @media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-body p { color: var(--text-dim); font-size: 15.5px; font-weight: 500; margin: 0 0 16px; }
+  .about-body strong { color: var(--text); font-weight: 700; background: var(--accent-yellow); padding: 0 2px; }
+  .sidefacts { display: flex; flex-direction: column; gap: 0; border: 2px solid var(--border); background: var(--surface); }
+  .sidefacts div { padding: 10px 14px; border-bottom: 2px solid var(--border); font-family: var(--mono); font-size: 12.5px; font-weight: 600; display: flex; justify-content: space-between; gap: 12px; }
+  .sidefacts div:last-child { border-bottom: none; }
+  .sidefacts span.k { color: var(--text-faint); }
+  .sidefacts span.v { color: var(--text); text-align: right; }
+
+  /* Experience Log */
+  .log { position: relative; padding-left: 20px; }
+  .log::before { content: ""; position: absolute; left: 4px; top: 6px; bottom: 6px; width: 3px; background: var(--border); }
+  .entry { position: relative; padding-bottom: 32px; }
+  .entry:last-child { padding-bottom: 0; }
+  .entry::before {
+    content: ""; position: absolute; left: -21px; top: 4px; width: 11px; height: 11px;
+    background: var(--accent-lime); border: 2.5px solid var(--border);
+  }
+  .entry.past::before { background: var(--surface); }
+  .entry-meta {
+    font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--text-faint); margin-bottom: 4px; text-transform: uppercase;
+  }
+  .entry-title { font-size: 18px; font-weight: 700; color: var(--text); margin: 0 0 2px; }
+  .entry-org { font-size: 13.5px; color: var(--text); font-weight: 700; font-family: var(--mono); margin: 0 0 10px; background: var(--accent-blue); display: inline-block; border: 1.5px solid var(--border); padding: 1px 6px; }
+  .entry ul { margin: 0; padding-left: 18px; color: var(--text-dim); font-size: 14.5px; font-weight: 500; }
+  .entry li { margin-bottom: 6px; }
+
+  /* Expertise Grid */
+  .modgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 860px) { .modgrid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .modgrid { grid-template-columns: 1fr; } }
+  .mod {
+    background: var(--surface); border: 2px solid var(--border); box-shadow: 3px 3px 0px var(--border); padding: 16px;
+  }
+  .mod-head { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+  .mod-icon { width: 8px; height: 8px; background: var(--border); }
+  .mod-title { font-family: var(--mono); font-size: 13px; color: var(--text); font-weight: 700; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--text); background: var(--accent-yellow);
+    border: 1.5px solid var(--border); padding: 2px 6px;
+  }
+
+  /* Certifications */
+  .certgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  @media (max-width: 720px) { .certgrid { grid-template-columns: 1fr; } }
+  .certcard {
+    background: var(--surface); border: 2px solid var(--border); box-shadow: 3px 3px 0px var(--border); padding: 18px;
+  }
+  .certcard .mod-head { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+  .certlist { display: flex; flex-direction: column; gap: 12px; }
+  .certitem .cname { font-size: 14px; color: var(--text); font-weight: 700; line-height: 1.3; }
+  .certitem .cmeta { font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--text-faint); margin-top: 2px; }
+
+  /* Education */
+  .edu-row { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 2px dashed var(--border); flex-wrap: wrap; }
+  .edu-row:last-child { border-bottom: none; }
+  .edu-title { font-weight: 700; color: var(--text); font-size: 15px; }
+  .edu-sub { color: var(--text-dim); font-size: 13.5px; font-weight: 500; margin-top: 2px; }
+  .edu-tag { font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--text); background: var(--accent-lime); border: 1.5px solid var(--border); padding: 2px 6px; align-self: center; }
+
+  /* Resumes */
+  .resumegrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  @media (max-width: 720px) { .resumegrid { grid-template-columns: 1fr; } }
+  .rescard {
+    background: var(--surface); border: 2px solid var(--border); box-shadow: 3px 3px 0px var(--border); padding: 18px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .rescard .tag {
+    font-family: var(--mono); font-size: 10.5px; font-weight: 700; text-transform: uppercase;
+    color: var(--text); background: var(--accent-orange); border: 1.5px solid var(--border);
+    width: fit-content; padding: 2px 6px;
+  }
+  .rescard h3 { margin: 0; font-size: 16px; color: var(--text); }
+  .rescard p { margin: 0; color: var(--text-dim); font-size: 13.5px; }
+  .rescard .links { display: flex; gap: 10px; margin-top: 4px; }
+  .rescard .links a {
+    font-family: var(--mono); font-size: 12px; font-weight: 700; text-decoration: none; color: var(--text);
+    border-bottom: 2px solid var(--border);
+  }
+  .rescard .links a:hover { background: var(--accent-lime); }
+
+  /* Footer Panel */
+  .contact-panel { text-align: center; }
+  .contact-panel h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 12px; }
+  .contact-panel p { color: var(--text-dim); font-size: 15px; font-weight: 500; max-width: 44ch; margin: 0 auto 24px; }
+  .contact-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .footnote {
+    margin-top: 24px; text-align: center; font-family: var(--mono); font-size: 11.5px; font-weight: 700; color: var(--text-faint);
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top"><span class="dot"></span>NKG</a>
+    <nav class="mainnav">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <span class="status-pill"><span class="pulse"></span>Open to Staff / Lead Backend roles</span>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+
+  <!-- HERO -->
+  <section class="brutal-card" id="hero">
+    <div class="hero-grid">
+      <div>
+        <p class="kicker">senior software engineer · tech lead</p>
+        <h1>Naveen Kumar Gundu builds backend systems that <span class="accent">don't page you at 2am.</span></h1>
+        <p class="hero-desc">
+          Nearly 15 years building and enhancing distributed backend systems, catalog &amp; search infrastructure,
+          and — more recently — applied-AI tooling for tier-1 e-commerce and marketplace platforms.
+          Currently pursuing an M.S. in Artificial Intelligence at UT Austin.
+        </p>
+        <div class="cta-row">
+          <!-- <a class="btn primary" href="#resumes">View resumes ↓</a> -->
+          <a class="btn primary" href="mailto:snvnaveenkumarg@gmail.com">Email me</a>
+          <a class="btn ghost" href="https://linkedin.com/in/naveen-gundu" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+      </div>
+
+      <div class="statuspanel">
+        <div class="statuspanel-head">
+          <span>system_status.log</span>
+          <span class="lights"><span></span><span></span><span></span></span>
+        </div>
+        <div class="statuspanel-body">
+          <div class="metric-row">
+            <span class="metric-label">EXPERIENCE</span>
+            <span class="metric-value ok">~15 yrs</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">AI-TOOLING CYCLE-TIME IMPACT</span>
+            <span class="metric-value ok">-80%</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">LARGEST TEAM MENTORED</span>
+            <span class="metric-value">8 engineers</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">CURRENT FOCUS</span>
+            <span class="metric-value warn">Applied AI + Platform Eng.</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">EDUCATION</span>
+            <span class="metric-value">M.S. AI · UT Austin (in progress)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="brutal-card" id="about">
+    <span class="eyebrow">about</span>
+    <h2>Backend by trade, AI by recent necessity</h2>
+    <div class="about-grid">
+      <div class="about-body">
+        <p>
+          I've spent most of my career on the parts of e-commerce platforms customers never see directly —
+          <strong>catalog systems, search infrastructure, pricing pipelines, and the backend plumbing</strong>
+          that keeps millions of products indexed, priced, and discoverable. I started on Oracle ATG and Endeca,
+          led the migration of monolithic commerce systems to <strong>AWS-native microservices</strong>, and now
+          lead <strong>catalog and AI/ML integration efforts</strong> for a fashion &amp; home retail platform.
+        </p>
+        <p>
+          My applied-AI work goes back further than people often assume: I started by fine-tuning classification
+          models on <strong>AWS SageMaker</strong>, moved into <strong>LLM fine-tuning and OpenAI integration</strong>
+          for production ranking pipelines, and most recently built
+          <strong>"Detect Playground"</strong> using AI-assisted ("vibe coding") development — a project to
+          replace a paid third-party tool, migrated to our internal GCP platform in a 30-day first phase, with
+          reusable Claude/Cursor skills so other engineers could extend it. It's now being used as the base for
+          a broader, org-wide rollout of this approach.
+        </p>
+        <p>
+          I care about systems that are boring in production — observable, well-instrumented, and easy to
+          hand off — and I like mentoring engineers into being the kind of on-call partner you actually want
+          at 2am.
+        </p>
+      </div>
+      <div class="sidefacts">
+        <div><span class="k">Based in</span><span class="v">Celina, TX</span></div>
+        <div><span class="k">Core stack</span><span class="v">Java · Python · Go</span></div>
+        <div><span class="k">Cloud</span><span class="v">AWS · GCP · K8s</span></div>
+        <div><span class="k">Domain</span><span class="v">Catalog · Search · Pricing</span></div>
+        <div><span class="k">AI/ML focus</span><span class="v">SageMaker → LLMs → AI tooling</span></div>
+        <div><span class="k">Education</span><span class="v">M.S. AI, UT Austin</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="brutal-card" id="experience">
+    <span class="eyebrow">experience</span>
+    <h2>Where I've built things</h2>
+    <div class="log">
+
+      <div class="entry">
+        <div class="entry-meta">Jan 2026 → present</div>
+        <h3 class="entry-title">Senior Software Engineer — Lead Level</h3>
+        <p class="entry-org">Rakuten Marketing · Celina, TX</p>
+        <ul>
+          <li>Built "Detect Playground" using AI-assisted ("vibe coding") development to replace a paid third-party tool: migrated it to our internal GCP platform in a 30-day first phase and created reusable Claude/Cursor skills so other engineers could extend it — now used as the base for a broader, org-wide rollout of this approach.</li>
+          <li>Led migration of marketplace order-processing applications (e.g., Shopee) to Go — my first project in the language.</li>
+          <li>Built merchant-onboarding features integrating Salesforce and Jira, including automated Jira ticket creation for the client launch process.</li>
+          <li>Resolved production issues and shipped Shopify integration features across multiple marketplace systems.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-meta">Mar 2021 → Dec 2025</div>
+        <h3 class="entry-title">Tech Lead / Senior Catalog Engineer</h3>
+        <p class="entry-org">Rakuten Rewards — ShopStyle.com / Collective Voice · Celina, TX</p>
+        <ul>
+          <li>Owned catalog &amp; search architecture across fashion and home retail verticals; introduced attribute schemas powering new search filters.</li>
+          <li>Designed and developed a high-scale ingestion tool to capture social media content, leveraging AI to analyze and categorize influencers and power a searchable discovery platform for brand partners.</li>
+          <li>Contributed to the design and 2025 upgrade of the product classification engine, helping replace legacy custom ML models with OpenAI (GPT-4) to improve accuracy and reduce maintenance overhead.</li>
+          <li>Designed and built a custom ML pipeline (AWS SageMaker) to categorize millions of products, improving prediction accuracy from 60% to 92%, and implemented a proprietary Human-in-the-Loop (HITL) feedback system to correct inferences during retraining.</li>
+          <li>Designed a Java-based microservices framework on AWS that ingested, normalized, and processed 500M+ SKUs across 1,000+ heterogeneous merchant feeds.</li>
+          <li>Implemented Platform Gating, bonus-program, and subscription-program systems for the creator platform.</li>
+          <li>Engineered high-volume MongoDB → PostgreSQL migrations and automated commission/billing-adjacent workflows.</li>
+        </ul>
+      </div>
+
+      <div class="entry past">
+        <div class="entry-meta">Feb 2016 → Feb 2021</div>
+        <h3 class="entry-title">Senior Engineer Level 2 — Software Development &amp; Site Reliability Engineering</h3>
+        <p class="entry-org">Publicis Sapient (Client: JCPenney) · Plano, TX</p>
+        <ul>
+          <li>Migrated the product catalog from Oracle ATG to the cloud and built product categorization programs to classify products based on attributes.</li>
+          <li>Integrated pricing, item, inventory, and content management systems with the core catalog platform.</li>
+          <li>Led migration of monolithic Oracle ATG systems to AWS-native Spring Boot microservices.</li>
+          <li>Built an internal SRE platform on Splunk, Wily, and the ELK stack, reducing MTTR across distributed apps.</li>
+          <li>Led a global team of 6 engineers (US/India) owning high-severity incident resolution under strict SLAs.</li>
+        </ul>
+      </div>
+
+      <div class="entry past">
+        <div class="entry-meta">Jan 2015 → Feb 2016</div>
+        <h3 class="entry-title">Senior ATG Developer / Team Lead</h3>
+        <p class="entry-org">Avani Technology Solutions (Client: TOMS.com) · Los Angeles, CA</p>
+        <ul>
+          <li>Designed full-stack e-commerce applications on Oracle ATG and Endeca with global i18n support.</li>
+          <li>Managed and mentored a development team of 8 engineers across the full SDLC.</li>
+        </ul>
+      </div>
+
+      <div class="entry past">
+        <div class="entry-meta">2010 → 2014</div>
+        <h3 class="entry-title">ATG Developer → Systems Engineer</h3>
+        <p class="entry-org">Sapient Consulting (JCPenney) &amp; Tata Consultancy Services (Sprint/Nextel)</p>
+        <ul>
+          <li>Multi-channel e-commerce and telecom platform development on Java/J2EE and Oracle ATG.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section class="brutal-card" id="expertise">
+    <span class="eyebrow">expertise</span>
+    <h2>Capability map</h2>
+    <div class="modgrid">
+
+      <div class="mod">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Backend &amp; Platform</span></div>
+        <div class="chips">
+          <span class="chip">Java</span><span class="chip">Python</span><span class="chip">Go</span>
+          <span class="chip">Spring Boot</span><span class="chip">Spring Cloud</span><span class="chip">GraphQL</span>
+          <span class="chip">Microservices</span>
+        </div>
+      </div>
+
+      <div class="mod">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">AI / ML Integration</span></div>
+        <div class="chips">
+          <span class="chip">LLM Integration</span><span class="chip">OpenAI</span><span class="chip">Claude</span>
+          <span class="chip">Prompt Engineering</span><span class="chip">SageMaker Fine-Tuning</span>
+        </div>
+      </div>
+
+      <div class="mod">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Cloud &amp; DevOps</span></div>
+        <div class="chips">
+          <span class="chip">AWS</span><span class="chip">GCP</span><span class="chip">Docker</span>
+          <span class="chip">Kubernetes</span><span class="chip">Terraform</span><span class="chip">CircleCI</span><span class="chip">Jenkins</span>
+        </div>
+      </div>
+
+      <div class="mod">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Search &amp; Catalog</span></div>
+        <div class="chips">
+          <span class="chip">Elasticsearch</span><span class="chip">Apache SOLR</span><span class="chip">Oracle Endeca</span>
+          <span class="chip">Relevance Tuning</span>
+        </div>
+      </div>
+
+      <div class="mod">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Data &amp; Persistence</span></div>
+        <div class="chips">
+          <span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">Cassandra</span>
+          <span class="chip">DynamoDB</span><span class="chip">Redis</span><span class="chip">Hazelcast</span>
+        </div>
+      </div>
+
+      <div class="mod">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Observability &amp; SRE</span></div>
+        <div class="chips">
+          <span class="chip">Datadog</span><span class="chip">Grafana</span><span class="chip">Splunk</span>
+          <span class="chip">Wily</span><span class="chip">ELK Stack</span><span class="chip">MTTR Reduction</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="brutal-card" id="certifications">
+    <span class="eyebrow">credentials</span>
+    <h2>Certifications</h2>
+    <div class="certgrid">
+
+      <div class="certcard">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Applied AI &amp; Machine Learning</span></div>
+        <div class="certlist">
+          <div class="certitem">
+            <div class="cname">AI in Healthcare</div>
+            <div class="cmeta">University of Texas at Austin · May 2026</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Claude Code in Action</div>
+            <div class="cmeta">Anthropic · Mar 2026</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Ethics in AI</div>
+            <div class="cmeta">University of Texas at Austin · Jan 2026</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Advances in Deep Learning</div>
+            <div class="cmeta">University of Texas at Austin · May 2025</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Deep Learning</div>
+            <div class="cmeta">University of Texas at Austin · Dec 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="certcard">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Cloud Infrastructure (GCP)</span></div>
+        <div class="certlist">
+          <div class="certitem">
+            <div class="cname">Cloud Engineering with Google Cloud Specialization</div>
+            <div class="cmeta">Coursera · May 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Preparing for the Google Cloud Associate Cloud Engineer Exam</div>
+            <div class="cmeta">Coursera · May 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Elastic Google Cloud Infrastructure: Scaling and Automation</div>
+            <div class="cmeta">Coursera · Apr 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Essential Google Cloud Infrastructure: Core Services</div>
+            <div class="cmeta">Coursera · Apr 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Essential Google Cloud Infrastructure: Foundation</div>
+            <div class="cmeta">Coursera · Apr 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Google Cloud Platform Fundamentals: Core Infrastructure</div>
+            <div class="cmeta">Coursera · Apr 2020</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="certcard">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Backend Architecture &amp; Data</span></div>
+        <div class="certlist">
+          <div class="certitem">
+            <div class="cname">Reactive Architecture: Domain-Driven Design - Level 2</div>
+            <div class="cmeta">Akka · Jun 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Reactive Architecture: Introduction to Reactive Systems - Level 2</div>
+            <div class="cmeta">Akka · May 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Principles of Reactive Architecture</div>
+            <div class="cmeta">IBM · Apr 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Spark - Level 1</div>
+            <div class="cmeta">IBM · May 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Docker Essentials: A Developer Introduction</div>
+            <div class="cmeta">IBM · May 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">JDK 8: Lambdas and Streams Introduction</div>
+            <div class="cmeta">Oracle · May 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Neo4j Certified Professional</div>
+            <div class="cmeta">Neo4j · Oct 2019</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Spring Boot 2 Essential Training</div>
+            <div class="cmeta">Lynda.com · Jul 2019</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="certcard">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Front-End</span></div>
+        <div class="certlist">
+          <div class="certitem">
+            <div class="cname">Learning React.js</div>
+            <div class="cmeta">Lynda.com · Jun 2019</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RESUMES (Preserved commented section) -->
+  <!--
+  <section class="brutal-card" id="resumes">
+    <span class="eyebrow">downloads</span>
+    <h2>Role-tailored resumes</h2>
+    <div class="resumegrid">
+
+      <div class="rescard">
+        <span class="tag">Backend · Applied AI</span>
+        <h3>FICO — Senior/Lead Backend Engineer</h3>
+        <p>Tailored for backend + data pipeline roles integrating LLMs into production decisioning systems.</p>
+        <div class="links">
+          <a href="Naveen_Gundu_Resume_FICO.pdf" target="_blank">View PDF ↗</a>
+          <a href="Naveen_Gundu_Resume_FICO.docx" download>Download .docx</a>
+        </div>
+      </div>
+
+      <div class="rescard">
+        <span class="tag">Platform · AI Tooling</span>
+        <h3>Hims &amp; Hers — Staff Software Engineer</h3>
+        <p>Tailored for subscription/lifecycle platform work and AI-assisted engineering leadership.</p>
+        <div class="links">
+          <a href="Naveen_Gundu_Resume_HimsHers.pdf" target="_blank">View PDF ↗</a>
+          <a href="Naveen_Gundu_Resume_HimsHers.docx" download>Download .docx</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  -->
+
+  <!-- EDUCATION -->
+  <section class="brutal-card" id="education">
+    <span class="eyebrow">credentials</span>
+    <h2>Education</h2>
+    <div class="edu-row">
+      <div>
+        <div class="edu-title">Master of Science in Artificial Intelligence</div>
+        <div class="edu-sub">University of Texas at Austin</div>
+      </div>
+      <div class="edu-tag">in progress</div>
+    </div>
+    <div class="edu-row">
+      <div>
+        <div class="edu-title">Bachelor of Technology, Computer Science &amp; Engineering</div>
+        <div class="edu-sub">Jawaharlal Nehru Technological University, India</div>
+      </div>
+      <div class="edu-tag">2010</div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact" class="wrap">
+  <div class="brutal-card yellow-bg contact-panel">
+    <span class="eyebrow">get in touch</span>
+    <h2>Let's talk about your backend problems.</h2>
+    <p>Open to Staff / Senior / Lead backend and applied-AI platform roles. Response SLA: under 24 hours.</p>
+    <div class="contact-links">
+      <a class="btn primary" href="mailto:snvnaveenkumarg@gmail.com">snvnaveenkumarg@gmail.com</a>
+      <a class="btn ghost" href="tel:+12485504360">+1 (248) 550-4360</a>
+      <a class="btn ghost" href="https://linkedin.com/in/naveen-gundu" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </div>
+  <p class="footnote">© Naveen Kumar Gundu · Celina, TX</p>
+</footer>
+
+</body>
+</html>
