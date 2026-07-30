@@ -192,6 +192,80 @@
   .entry ul:last-child{ margin-bottom:0; }
   .entry li{ margin-bottom:6px; }
   .entry-subhead{ font-family:var(--mono); font-size:11px; color:var(--text-faint); text-transform:uppercase; letter-spacing:.05em; margin:0 0 6px; }
+
+  /* ---------- Case Study ---------- */
+  .cs-meta{
+    display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px;
+  }
+  .cs-meta span{
+    font-family:var(--mono); font-size:11.5px; color:var(--text-dim);
+    border:1px solid var(--border); background:var(--panel); padding:5px 10px; border-radius:6px;
+  }
+
+  .cs-highlights{
+    display:flex; flex-direction:column; gap:12px; margin-bottom:36px;
+    background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:20px 22px;
+  }
+  .cs-highlights .hl{ display:flex; gap:10px; align-items:baseline; }
+  .cs-highlights .hl::before{ content:"—"; color:var(--ok); font-family:var(--mono); flex:none; }
+  .cs-highlights .hl p{ margin:0; font-size:14px; color:var(--text-dim); line-height:1.6; }
+  .cs-highlights .hl strong{ color:var(--text); }
+
+  .cs-accordion{ border-top:1px solid var(--border-soft); }
+  details.cs-block{
+    border-bottom:1px solid var(--border-soft); padding:16px 0;
+  }
+  details.cs-block summary{
+    cursor:pointer; list-style:none; display:flex; align-items:center; gap:10px;
+    font-family:var(--mono); font-size:13px; color:var(--text); text-transform:uppercase;
+    letter-spacing:.06em; user-select:none;
+  }
+  details.cs-block summary::-webkit-details-marker{ display:none; }
+  details.cs-block summary::before{
+    content:"▸"; color:var(--ok); font-size:12px; transition:transform .15s ease; flex:none;
+  }
+  details.cs-block[open] summary::before{ transform:rotate(90deg); }
+  details.cs-block summary:hover{ color:var(--ok); }
+  details.cs-block summary .cs-sub{
+    font-family:var(--sans); text-transform:none; letter-spacing:0; color:var(--text-faint); font-size:12.5px; font-weight:400;
+  }
+  .cs-body{ padding:16px 0 4px 17px; }
+  .cs-body p{ color:var(--text-dim); font-size:14.5px; max-width:70ch; margin:0 0 12px; }
+  .cs-body p:last-child{ margin-bottom:0; }
+  .cs-body ul{ margin:0; padding-left:18px; color:var(--text-dim); font-size:14.5px; max-width:70ch; }
+  .cs-body li{ margin-bottom:8px; }
+
+  .cs-flow{
+    display:flex; align-items:stretch; gap:8px; flex-wrap:wrap; margin:18px 0 8px;
+  }
+  .cs-flow .step{
+    flex:1; min-width:150px; background:var(--panel); border:1px solid var(--border); border-radius:8px;
+    padding:14px 12px; position:relative;
+  }
+  .cs-flow .step .n{ font-family:var(--mono); font-size:10px; color:var(--text-faint); margin-bottom:6px; }
+  .cs-flow .step .t{ font-size:13px; color:var(--text); font-weight:600; line-height:1.35; }
+  .cs-flow .step.pending{ border-style:dashed; opacity:.75; }
+  .cs-flow .step.pending .t{ color:var(--text-dim); }
+  .cs-flow .arrow{
+    display:flex; align-items:center; justify-content:center; color:var(--text-faint);
+    font-family:var(--mono); font-size:16px; padding:0 2px;
+  }
+  @media (max-width:760px){
+    .cs-flow{ flex-direction:column; }
+    .cs-flow .arrow{ transform:rotate(90deg); padding:2px 0; }
+  }
+  .cs-flow-caption{ font-family:var(--mono); font-size:11px; color:var(--text-faint); margin-top:4px; }
+
+  .cs-callout{
+    border-left:2px solid var(--warn); background:var(--warn-dim); border-radius:0 8px 8px 0;
+    padding:12px 16px; margin-top:14px; font-size:13.5px; color:var(--text-dim);
+  }
+  .cs-callout strong{ color:var(--text); }
+  .cs-body code{
+    font-family:var(--mono); font-size:13px; background:var(--panel-2); color:var(--ok);
+    padding:1px 6px; border-radius:4px; border:1px solid var(--border-soft);
+  }
+
   .entry-more{
     display:inline-block; margin-top:10px; font-family:var(--mono); font-size:11.5px; color:var(--text-faint);
   }
@@ -286,6 +360,7 @@
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
       <a href="#expertise">Expertise</a>
+      <a href="#case-study">Case Study</a>
       <a href="#certifications">Certifications</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -391,6 +466,8 @@
         <div><span class="k">Cloud</span><span class="v">AWS · GCP · K8s</span></div>
         <div><span class="k">Domain</span><span class="v">Catalog · Search · Pricing</span></div>
         <div><span class="k">AI/ML focus</span><span class="v">SageMaker → LLMs → AI tooling</span></div>
+        <div><span class="k">AI coding tools</span><span class="v">Claude · Cursor · Copilot</span></div>
+        <div><span class="k">Built</span><span class="v">Reusable Claude/Cursor skills</span></div>
         <div><span class="k">Education</span><span class="v">M.S. AI, UT Austin</span></div>
       </div>
     </div>
@@ -422,7 +499,7 @@
         <p class="entry-org">Rakuten Rewards — ShopStyle.com / Collective Voice · Celina, TX</p>
         <p class="entry-subhead">Categorization &amp; ML Work</p>
         <ul>
-          <li>Contributed to the design and 2025 upgrade of the product classification engine, helping replace legacy custom ML models with OpenAI (GPT-4) to improve accuracy and reduce maintenance overhead.</li>
+          <li>Contributed to the design and upgrade of the product classification engine, helping replace legacy custom ML models with OpenAI (GPT-4) to improve accuracy and reduce maintenance overhead.</li>
           <li>Designed and built a custom ML pipeline (AWS SageMaker) to categorize millions of products, improving prediction accuracy from 60% to 92%; fine-tuned and retrained the model weekly on refreshed catalog data, with a proprietary Human-in-the-Loop (HITL) feedback system to correct inferences during retraining.</li>
           <li>Designed a Java-based microservices framework on AWS that ingested, normalized, and processed 500M+ SKUs across 1,000+ heterogeneous merchant feeds.</li>
         </ul>
@@ -578,9 +655,141 @@
     </div>
   </section>
 
+  <!-- CASE STUDY -->
+  <section id="case-study">
+    <p class="eyebrow">case study</p>
+    <h2>Building an AI-native development workflow</h2>
+
+    <div class="cs-meta">
+      <span>Internal Reporting Platform</span>
+      <span>Spring Boot · Java · Kubernetes</span>
+      <span>Claude Code · Cursor</span>
+    </div>
+
+    <div class="cs-highlights">
+      <div class="hl"><p><strong>First AI-native project on the team:</strong> built almost entirely through Claude/Cursor "vibe coding" rather than hand-written code — no prior AI-dev conventions existed before this.</p></div>
+      <div class="hl"><p><strong>Replaced per-seat BI licensing:</strong> removed a licensed BI platform's embedded reporting (billed per user, regardless of usage) with an in-house Spring Boot service.</p></div>
+      <div class="hl"><p><strong>Self-service delivery workflow:</strong> Jira ticket → AI implementation → branch-based K8s preview → developer review → production, with full deploy automation as the next milestone.</p></div>
+      <div class="hl"><p><strong>Adopted org-wide:</strong> the CLAUDE.md/SKILLS.md pattern has since been picked up by 3 other teams, extended with Slack/Teams integrations.</p></div>
+    </div>
+
+    <div class="cs-accordion">
+
+      <details class="cs-block" open>
+        <summary>The Problem <span class="cs-sub">— why this project existed</span></summary>
+        <div class="cs-body">
+          <p>
+            Reporting for this platform ran entirely on a licensed BI tool, embedded into our internal application —
+            users were redirected to a page where we hosted the header/footer, and the BI tool rendered all report
+            content, fed by data from our big-data stores. Licensing was per-seat: if a client had 20 people using
+            the reports, we paid for 20 licenses regardless of actual usage. As the client base grew, so did the
+            bill, disconnected from the value we were actually delivering.
+          </p>
+          <p>
+            There was also no established AI-assisted development practice on the team before this — nothing shared,
+            nothing reusable. This was the first project where the goal was to work almost entirely through
+            AI-assisted ("vibe") coding rather than traditional hand-coding — prompting Claude and Cursor to
+            implement changes rather than writing most of the code by hand.
+          </p>
+        </div>
+      </details>
+
+      <details class="cs-block">
+        <summary>Constraints <span class="cs-sub">— what made it hard</span></summary>
+        <div class="cs-body">
+          <ul>
+            <li>Replace a paid, embedded BI tool without losing functionality clients already depended on.</li>
+            <li>No prior AI-dev conventions to build on — had to define the process from zero.</li>
+            <li>Needed a workflow reliable enough that AI-generated code could be trusted and reviewed efficiently, not just generated quickly.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="cs-block">
+        <summary>The Approach <span class="cs-sub">— how it works</span></summary>
+        <div class="cs-body">
+          <p>
+            Built the replacement as a Spring Boot/Java service, deployed initially on Cloud Run and later migrated
+            to Kubernetes as it matured.
+          </p>
+          <p>
+            The larger goal was a self-service development workflow: a user submits a Jira ticket describing the
+            change they want. Claude or Cursor implements it. The branch deploys automatically to a dedicated,
+            branch-based deployment pod on Kubernetes so the requester can review the result directly — no need to
+            wait for a full release cycle to see it working. Once they're satisfied, a developer (me) reviews the
+            code and promotes it to production.
+          </p>
+
+          <div class="cs-flow">
+            <div class="step"><div class="n">01</div><div class="t">Jira ticket describes the change</div></div>
+            <div class="arrow">→</div>
+            <div class="step"><div class="n">02</div><div class="t">Claude / Cursor implements it</div></div>
+            <div class="arrow">→</div>
+            <div class="step"><div class="n">03</div><div class="t">Auto-deploy to a branch-based pod (K8s)</div></div>
+            <div class="arrow">→</div>
+            <div class="step"><div class="n">04</div><div class="t">Requester reviews live, developer reviews code</div></div>
+            <div class="arrow">→</div>
+            <div class="step pending"><div class="n">05 · planned</div><div class="t">Automated production deploy</div></div>
+          </div>
+          <p class="cs-flow-caption">Steps 1–4 are live today. Step 5 is the next milestone.</p>
+
+          <p style="margin-top:18px;">
+            <code>CLAUDE.md</code> and a set of <code>SKILLS.md</code> files are the foundation making this
+            trustworthy: repo-wide context, layer-by-layer conventions, and two structured skills — one scaffolds a
+            full new feature end-to-end (ticket → implementation → automated code review → commit/PR), the other
+            handles the far more common case of adding a parameter to an existing endpoint. Both let a requester
+            choose their depth of involvement, from plain-English descriptions to exact class-level specs.
+          </p>
+        </div>
+      </details>
+
+      <details class="cs-block">
+        <summary>Outcome <span class="cs-sub">— what happened</span></summary>
+        <div class="cs-body">
+          <p>
+            The service replaced the BI platform's core reporting function. The CLAUDE.md/SKILLS.md pattern was
+            adopted organically by three other teams, who've extended it with skills integrating into Slack and
+            Teams. The branch-per-ticket review workflow is live; full production auto-deployment is the next
+            milestone.
+          </p>
+        </div>
+      </details>
+
+      <details class="cs-block">
+        <summary>Retrospective <span class="cs-sub">— what I'd tell someone starting this today</span></summary>
+        <div class="cs-body">
+          <p>
+            The biggest shift in how I think about this work: <strong style="color:var(--text)">prompting is the
+            actual skill, not a shortcut around one.</strong> Early on I treated the CLAUDE.md/SKILLS.md files as
+            documentation — write it once, done. What I've learned is that a skill is only as good as the prompt
+            driving it; the same SKILLS.md file produces very different output depending on how precisely the
+            request is framed. The tiered-depth approach (plain English vs. exact class names) exists because of
+            this — an admission that vague prompts need more AI judgment calls, which means more risk, so the
+            workflow makes that tradeoff explicit rather than assuming one prompting style fits everyone.
+          </p>
+          <div class="cs-callout">
+            <strong>AI-generated code isn't always ship-ready.</strong> It hallucinates — confidently generating
+            code that references methods, patterns, or conventions that don't actually exist in the codebase.
+            That's exactly why review isn't optional in this workflow; every AI-authored change gets reviewed by a
+            developer before reaching production, and that review has caught real issues, not just style nits.
+          </div>
+          <div class="cs-callout">
+            <strong>Context size is a real, recurring constraint.</strong> On a codebase this size, how much
+            relevant context fits in the window directly affects output quality — too little and the AI misses
+            established patterns; too much and signal gets diluted. This is part of why CLAUDE.md points to smaller,
+            focused rule files instead of one giant document — right-sizing what gets loaded per task, rather than
+            assuming more context is always better.
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
   <!-- CERTIFICATIONS -->
   <section id="certifications">
     <p class="eyebrow">credentials</p>
+
     <h2>Certifications</h2>
     <div class="certgrid">
 
