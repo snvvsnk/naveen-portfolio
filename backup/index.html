@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Naveen Kumar Gundu — Senior Software Engineer & Tech Lead</title>
+<meta name="description" content="Naveen Kumar Gundu — Senior Software Engineer & Tech Lead. Distributed systems, catalog & search infrastructure, applied AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0a0f1a;
+    --bg-2: #0d1420;
+    --panel: #101827;
+    --panel-2: #0c1320;
+    --border: #22304d;
+    --border-soft: rgba(140,160,191,0.14);
+    --grid-line: rgba(140,160,191,0.06);
+    --text: #e9edf5;
+    --text-dim: #93a4c2;
+    --text-faint: #5d6c8a;
+    --ok: #35d399;
+    --ok-dim: rgba(53,211,153,0.14);
+    --warn: #ffb454;
+    --warn-dim: rgba(255,180,84,0.14);
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
+    --sans: 'IBM Plex Sans', system-ui, sans-serif;
+    --maxw: 1040px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+
+  body{
+    margin:0;
+    background:
+      linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / 100% 42px,
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 42px 100%,
+      radial-gradient(1100px 520px at 50% -10%, #101d33 0%, var(--bg) 60%),
+      var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:inherit; }
+  :focus-visible{ outline:2px solid var(--ok); outline-offset:3px; border-radius:3px; }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
+
+  /* ---------- Top bar ---------- */
+  header.topbar{
+    position:sticky; top:0; z-index:50;
+    background:rgba(10,15,26,0.86);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--border-soft);
+  }
+  .topbar-inner{
+    max-width:var(--maxw); margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+  .brand{
+    font-family:var(--mono); font-weight:600; font-size:14px; letter-spacing:0.02em;
+    display:flex; align-items:center; gap:10px; text-decoration:none;
+  }
+  .brand .dot{ width:8px; height:8px; border-radius:50%; background:var(--ok); box-shadow:0 0 0 3px var(--ok-dim); }
+  nav.mainnav{ display:flex; gap:22px; }
+  nav.mainnav a{
+    font-family:var(--mono); font-size:12.5px; text-decoration:none; color:var(--text-dim);
+    letter-spacing:0.03em; text-transform:uppercase;
+  }
+  nav.mainnav a:hover{ color:var(--text); }
+  .status-pill{
+    font-family:var(--mono); font-size:11.5px; color:var(--ok);
+    border:1px solid rgba(53,211,153,0.35); background:var(--ok-dim);
+    padding:5px 10px; border-radius:20px; display:flex; align-items:center; gap:7px;
+    white-space:nowrap;
+  }
+  .status-pill .pulse{
+    width:6px; height:6px; border-radius:50%; background:var(--ok);
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse{ 0%,100%{ opacity:1; transform:scale(1);} 50%{ opacity:0.35; transform:scale(0.7);} }
+  @media (max-width: 720px){ nav.mainnav{ display:none; } }
+
+  /* ---------- Section shell ---------- */
+  section{ padding:74px 0; border-bottom:1px solid var(--border-soft); }
+  section:last-of-type{ border-bottom:none; }
+  .eyebrow{
+    font-family:var(--mono); font-size:12px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--ok); margin:0 0 10px;
+  }
+  .eyebrow::before{ content:"// "; color:var(--text-faint); }
+  h2{
+    font-family:var(--mono); font-size:26px; font-weight:600; margin:0 0 30px; color:var(--text);
+    letter-spacing:-0.01em;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding-top:64px; }
+  .hero-grid{ display:grid; grid-template-columns:1.25fr 0.95fr; gap:40px; align-items:start; }
+  @media (max-width:860px){ .hero-grid{ grid-template-columns:1fr; } }
+
+  .kicker{
+    font-family:var(--mono); font-size:12.5px; color:var(--text-dim); letter-spacing:0.08em;
+    text-transform:uppercase; margin:0 0 18px; display:flex; align-items:center; gap:10px;
+  }
+  .kicker::before{ content:"["; color:var(--text-faint); }
+  .kicker::after{ content:"]"; color:var(--text-faint); }
+
+  h1{
+    font-family:var(--sans); font-weight:700; font-size:44px; line-height:1.12; margin:0 0 18px;
+    letter-spacing:-0.02em;
+  }
+  h1 .accent{ color:var(--ok); }
+  @media (max-width:560px){ h1{ font-size:32px; } }
+
+  .hero-desc{ color:var(--text-dim); font-size:16.5px; max-width:52ch; margin:0 0 30px; }
+
+  .cta-row{ display:flex; gap:12px; flex-wrap:wrap; }
+  .btn{
+    font-family:var(--mono); font-size:13px; text-decoration:none; padding:11px 18px;
+    border-radius:6px; border:1px solid var(--border); letter-spacing:0.02em; transition:all .15s ease;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn.primary{ background:var(--ok); color:#06140f; border-color:var(--ok); font-weight:600; }
+  .btn.primary:hover{ background:#4ee0ac; }
+  .btn.ghost{ color:var(--text); }
+  .btn.ghost:hover{ border-color:var(--text-dim); background:rgba(255,255,255,0.03); }
+
+  /* Status panel (signature element) */
+  .statuspanel{
+    background:var(--panel); border:1px solid var(--border); border-radius:10px; overflow:hidden;
+    position:relative;
+  }
+  .statuspanel::before{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background: linear-gradient(180deg, rgba(53,211,153,0.05), transparent 40%);
+  }
+  .statuspanel-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 16px; border-bottom:1px solid var(--border-soft);
+    font-family:var(--mono); font-size:11.5px; color:var(--text-faint); letter-spacing:0.04em;
+  }
+  .statuspanel-head .lights{ display:flex; gap:6px; }
+  .statuspanel-head .lights span{ width:8px; height:8px; border-radius:50%; background:var(--border); }
+  .statuspanel-body{ padding:18px 16px 20px; }
+  .metric-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:10px 0; border-bottom:1px dashed var(--border-soft); font-family:var(--mono);
+  }
+  .metric-row:last-child{ border-bottom:none; }
+  .metric-label{ font-size:12px; color:var(--text-dim); }
+  .metric-value{ font-size:15px; color:var(--text); font-weight:600; }
+  .metric-value.ok{ color:var(--ok); }
+  .metric-value.warn{ color:var(--warn); }
+
+  /* ---------- About ---------- */
+  .about-grid{ display:grid; grid-template-columns:1.4fr 1fr; gap:40px; }
+  @media (max-width:860px){ .about-grid{ grid-template-columns:1fr; } }
+  .about-body p{ color:var(--text-dim); font-size:15.5px; margin:0 0 16px; }
+  .about-body strong{ color:var(--text); font-weight:600; }
+  .sidefacts{ display:flex; flex-direction:column; gap:0; border:1px solid var(--border); border-radius:10px; overflow:hidden; }
+  .sidefacts div{ padding:13px 16px; border-bottom:1px solid var(--border-soft); font-family:var(--mono); font-size:13px; display:flex; justify-content:space-between; gap:12px; }
+  .sidefacts div:last-child{ border-bottom:none; }
+  .sidefacts span.k{ color:var(--text-faint); }
+  .sidefacts span.v{ color:var(--text); text-align:right; }
+
+  /* ---------- Experience timeline ---------- */
+  .log{ position:relative; padding-left:26px; }
+  .log::before{ content:""; position:absolute; left:6px; top:6px; bottom:6px; width:1px; background:var(--border); }
+  .entry{ position:relative; padding-bottom:38px; }
+  .entry:last-child{ padding-bottom:0; }
+  .entry::before{
+    content:""; position:absolute; left:-26px; top:5px; width:10px; height:10px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--ok);
+  }
+  .entry.past::before{ border-color:var(--text-faint); }
+  .entry-meta{
+    font-family:var(--mono); font-size:11.5px; color:var(--text-faint); letter-spacing:0.03em;
+    margin-bottom:6px; text-transform:uppercase;
+  }
+  .entry-title{ font-size:18px; font-weight:600; color:var(--text); margin:0 0 2px; }
+  .entry-org{ font-size:14px; color:var(--ok); font-family:var(--mono); margin:0 0 12px; }
+  .entry ul{ margin:0 0 14px; padding-left:18px; color:var(--text-dim); font-size:14.5px; }
+  .entry ul:last-child{ margin-bottom:0; }
+  .entry li{ margin-bottom:6px; }
+  .entry-subhead{ font-family:var(--mono); font-size:11px; color:var(--text-faint); text-transform:uppercase; letter-spacing:.05em; margin:0 0 6px; }
+
+  /* ---------- Case Study ---------- */
+  .cs-meta{
+    display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px;
+  }
+  .cs-meta span{
+    font-family:var(--mono); font-size:11.5px; color:var(--text-dim);
+    border:1px solid var(--border); background:var(--panel); padding:5px 10px; border-radius:6px;
+  }
+
+  .cs-highlights{
+    display:flex; flex-direction:column; gap:12px; margin-bottom:36px;
+    background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:20px 22px;
+  }
+  .cs-highlights .hl{ display:flex; gap:10px; align-items:baseline; }
+  .cs-highlights .hl::before{ content:"—"; color:var(--ok); font-family:var(--mono); flex:none; }
+  .cs-highlights .hl p{ margin:0; font-size:14px; color:var(--text-dim); line-height:1.6; }
+  .cs-highlights .hl strong{ color:var(--text); }
+
+  .cs-accordion{ border-top:1px solid var(--border-soft); }
+  details.cs-block{
+    border-bottom:1px solid var(--border-soft); padding:16px 0;
+  }
+  details.cs-block summary{
+    cursor:pointer; list-style:none; display:flex; align-items:center; gap:10px;
+    font-family:var(--mono); font-size:13px; color:var(--text); text-transform:uppercase;
+    letter-spacing:.06em; user-select:none;
+  }
+  details.cs-block summary::-webkit-details-marker{ display:none; }
+  details.cs-block summary::before{
+    content:"▸"; color:var(--ok); font-size:12px; transition:transform .15s ease; flex:none;
+  }
+  details.cs-block[open] summary::before{ transform:rotate(90deg); }
+  details.cs-block summary:hover{ color:var(--ok); }
+  details.cs-block summary .cs-sub{
+    font-family:var(--sans); text-transform:none; letter-spacing:0; color:var(--text-faint); font-size:12.5px; font-weight:400;
+  }
+  .cs-body{ padding:16px 0 4px 17px; }
+  .cs-body p{ color:var(--text-dim); font-size:14.5px; max-width:70ch; margin:0 0 12px; }
+  .cs-body p:last-child{ margin-bottom:0; }
+  .cs-body ul{ margin:0; padding-left:18px; color:var(--text-dim); font-size:14.5px; max-width:70ch; }
+  .cs-body li{ margin-bottom:8px; }
+
+  .cs-flow{
+    display:flex; align-items:stretch; gap:8px; flex-wrap:wrap; margin:18px 0 8px;
+  }
+  .cs-flow .step{
+    flex:1; min-width:150px; background:var(--panel); border:1px solid var(--border); border-radius:8px;
+    padding:14px 12px; position:relative;
+  }
+  .cs-flow .step .n{ font-family:var(--mono); font-size:10px; color:var(--text-faint); margin-bottom:6px; }
+  .cs-flow .step .t{ font-size:13px; color:var(--text); font-weight:600; line-height:1.35; }
+  .cs-flow .step.pending{ border-style:dashed; opacity:.75; }
+  .cs-flow .step.pending .t{ color:var(--text-dim); }
+  .cs-flow .arrow{
+    display:flex; align-items:center; justify-content:center; color:var(--text-faint);
+    font-family:var(--mono); font-size:16px; padding:0 2px;
+  }
+  @media (max-width:760px){
+    .cs-flow{ flex-direction:column; }
+    .cs-flow .arrow{ transform:rotate(90deg); padding:2px 0; }
+  }
+  .cs-flow-caption{ font-family:var(--mono); font-size:11px; color:var(--text-faint); margin-top:4px; }
+
+  .cs-callout{
+    border-left:2px solid var(--warn); background:var(--warn-dim); border-radius:0 8px 8px 0;
+    padding:12px 16px; margin-top:14px; font-size:13.5px; color:var(--text-dim);
+  }
+  .cs-callout strong{ color:var(--text); }
+  .cs-body code{
+    font-family:var(--mono); font-size:13px; background:var(--panel-2); color:var(--ok);
+    padding:1px 6px; border-radius:4px; border:1px solid var(--border-soft);
+  }
+
+  .entry-more{
+    display:inline-block; margin-top:10px; font-family:var(--mono); font-size:11.5px; color:var(--text-faint);
+  }
+
+  /* ---------- Expertise grid ---------- */
+  .modgrid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
+  @media (max-width:860px){ .modgrid{ grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width:560px){ .modgrid{ grid-template-columns:1fr; } }
+  .mod{
+    background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:18px;
+    position:relative;
+  }
+  .mod::before, .mod::after{
+    content:""; position:absolute; width:9px; height:9px; border-color:var(--border-soft); border-style:solid; opacity:0.8;
+  }
+  .mod::before{ top:8px; left:8px; border-width:1px 0 0 1px; }
+  .mod::after{ bottom:8px; right:8px; border-width:0 1px 1px 0; }
+  .mod-head{ display:flex; align-items:center; gap:8px; margin-bottom:12px; }
+  .mod-icon{ width:7px; height:7px; border-radius:1px; background:var(--ok); transform:rotate(45deg); flex:none; }
+  .mod-title{ font-family:var(--mono); font-size:13px; color:var(--text); font-weight:600; letter-spacing:0.01em; }
+  .chips{ display:flex; flex-wrap:wrap; gap:6px; }
+  .chip{
+    font-family:var(--mono); font-size:11px; color:var(--text-dim); background:var(--panel-2);
+    border:1px solid var(--border-soft); padding:4px 8px; border-radius:5px;
+  }
+
+  /* ---------- Certifications ---------- */
+  .certgrid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; }
+  @media (max-width:720px){ .certgrid{ grid-template-columns:1fr; } }
+  .certcard{
+    background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:18px;
+    position:relative;
+  }
+  .certcard::before, .certcard::after{
+    content:""; position:absolute; width:9px; height:9px; border-color:var(--border-soft); border-style:solid; opacity:0.8;
+  }
+  .certcard::before{ top:8px; left:8px; border-width:1px 0 0 1px; }
+  .certcard::after{ bottom:8px; right:8px; border-width:0 1px 1px 0; }
+  .certcard .mod-head{ display:flex; align-items:center; gap:8px; margin-bottom:14px; }
+  .certlist{ display:flex; flex-direction:column; gap:13px; }
+  .certitem .cname{ font-size:13.5px; color:var(--text); font-weight:600; line-height:1.35; }
+  .certitem .cmeta{ font-family:var(--mono); font-size:11px; color:var(--text-faint); margin-top:3px; letter-spacing:0.02em; }
+
+  /* ---------- Resumes ---------- */
+  .resumegrid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; }
+  @media (max-width:720px){ .resumegrid{ grid-template-columns:1fr; } }
+  .rescard{
+    background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:20px;
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .rescard .tag{
+    font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--warn); background:var(--warn-dim); border:1px solid rgba(255,180,84,0.3);
+    width:fit-content; padding:3px 8px; border-radius:4px;
+  }
+  .rescard h3{ margin:0; font-size:16px; color:var(--text); }
+  .rescard p{ margin:0; color:var(--text-dim); font-size:13.5px; }
+  .rescard .links{ display:flex; gap:10px; margin-top:4px; }
+  .rescard .links a{
+    font-family:var(--mono); font-size:12px; text-decoration:none; color:var(--ok);
+    border-bottom:1px solid rgba(53,211,153,0.35);
+  }
+  .rescard .links a:hover{ color:#4ee0ac; }
+
+  /* ---------- Education ---------- */
+  .edu-row{ display:flex; justify-content:space-between; gap:20px; padding:16px 0; border-bottom:1px solid var(--border-soft); flex-wrap:wrap; }
+  .edu-row:last-child{ border-bottom:none; }
+  .edu-title{ font-weight:600; color:var(--text); font-size:15px; }
+  .edu-sub{ color:var(--text-dim); font-size:13.5px; margin-top:2px; }
+  .edu-tag{ font-family:var(--mono); font-size:11px; color:var(--ok); align-self:center; }
+
+  /* ---------- Footer / contact ---------- */
+  footer{ padding:60px 0 40px; }
+  .contact-panel{
+    background:var(--panel); border:1px solid var(--border); border-radius:12px;
+    padding:34px; text-align:center;
+  }
+  .contact-panel h2{ margin-bottom:12px; }
+  .contact-panel p{ color:var(--text-dim); max-width:44ch; margin:0 auto 24px; }
+  .contact-links{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .footnote{
+    margin-top:26px; text-align:center; font-family:var(--mono); font-size:11px; color:var(--text-faint);
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top"><span class="dot"></span>NKG</a>
+    <nav class="mainnav">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#case-study">Case Study</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <span class="status-pill"><span class="pulse"></span>Open to Staff / Lead Backend roles</span>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-grid">
+      <div>
+        <p class="kicker">senior software engineer · tech lead</p>
+        <h1>Naveen Kumar Gundu builds backend systems that <span class="accent">don't page you at 2am.</span></h1>
+        <p class="hero-desc">
+          Nearly 15 years building and enhancing distributed backend systems, catalog &amp; search infrastructure,
+          and — more recently — applied-AI tooling for tier-1 e-commerce and marketplace platforms.
+          Currently pursuing an M.S. in Artificial Intelligence at UT Austin.
+        </p>
+        <div class="cta-row">
+          <!-- <a class="btn primary" href="#resumes">View resumes ↓</a> -->
+          <a class="btn ghost" href="mailto:naveengundu.dev@gmail.com">Email me</a>
+          <a class="btn ghost" href="https://linkedin.com/in/naveen-gundu" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+      </div>
+
+      <div class="statuspanel">
+        <div class="statuspanel-head">
+          <span>system_status.log</span>
+          <span class="lights"><span></span><span></span><span></span></span>
+        </div>
+        <div class="statuspanel-body">
+          <div class="metric-row">
+            <span class="metric-label">EXPERIENCE</span>
+            <span class="metric-value ok">~15 yrs</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">AI-TOOLING CYCLE-TIME IMPACT</span>
+            <span class="metric-value ok">-80%</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">LARGEST TEAM MENTORED</span>
+            <span class="metric-value">8 engineers</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">CURRENT FOCUS</span>
+            <span class="metric-value warn">Applied AI in Backend Dev</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">EDUCATION</span>
+            <span class="metric-value">M.S. AI · UT Austin (in progress)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="eyebrow">about</p>
+    <h2>Backend by trade, AI by recent necessity</h2>
+    <div class="about-grid">
+      <div class="about-body">
+        <p>
+          I started my career in 2010 at Tata Consultancy Services in Chennai, straight out of college, building
+          telecom e-commerce features for NII Holdings' Latin American markets — profile management, self-care
+          applications, billing integration. Within a couple of years I was leading a 5-person module on a
+          telecom platform build. From there I moved to Sapient in Bengaluru, joining the team migrating
+          JCPenney's $1.6B+ e-commerce business off legacy infrastructure onto Oracle ATG — catalog, pricing,
+          and product data integration at a scale I hadn't touched before.
+        </p>
+        <p>
+          A stint at TOMS Shoes in LA followed, then back to JCPenney — this time on the SRE side at Publicis
+          Sapient, where I spent five years owning production health: building internal tooling (an ELK-based
+          monitoring dashboard, Python automation for catalog/pricing feeds, on-the-fly cache and price-correction
+          tools), migrating monolithic ATG systems to AWS microservices, and eventually leading the Top-of-Funnel
+          SRE team from onsite. That's also where I've spent most of my career on the parts of e-commerce
+          platforms customers never see directly — <strong>catalog systems, search infrastructure, pricing
+          pipelines, and the backend plumbing</strong> that keeps millions of products indexed, priced, and
+          discoverable.
+        </p>
+        <p>
+          In 2021 I moved to Rakuten Rewards to lead catalog and AI/ML integration for a fashion &amp; home
+          retail platform, and I'm now at Rakuten Marketing. My applied-AI work goes back further than people
+          often assume: I started by fine-tuning classification models on <strong>AWS SageMaker</strong>, moved
+          into <strong>LLM fine-tuning and OpenAI integration</strong> for production ranking pipelines, and most
+          recently customized <strong>CLAUDE.md</strong> configuration and authored multiple <strong>SKILLS.md</strong>
+          files to create reusable Claude/Cursor skills that streamlined development workflows — enabling the
+          product team to focus on feature development. It's now being used as the base for a broader, org-wide
+          rollout of this approach.
+        </p>
+        <p>
+          I care about systems that are boring in production — observable, well-instrumented, and easy to
+          hand off — and I like mentoring engineers into being the kind of on-call partner you actually want
+          at 2am.
+        </p>
+      </div>
+      <div class="sidefacts">
+        <div><span class="k">Based in</span><span class="v">Celina, TX</span></div>
+        <div><span class="k">Career start</span><span class="v">2010, TCS Chennai</span></div>
+        <div><span class="k">Core stack</span><span class="v">Java · Python · Go</span></div>
+        <div><span class="k">Cloud</span><span class="v">AWS · GCP · K8s</span></div>
+        <div><span class="k">Domain</span><span class="v">Catalog · Search · Pricing</span></div>
+        <div><span class="k">AI/ML focus</span><span class="v">SageMaker → LLMs → AI tooling</span></div>
+        <div><span class="k">AI coding tools</span><span class="v">Claude · Cursor · Copilot</span></div>
+        <div><span class="k">Built</span><span class="v">Reusable Claude/Cursor skills</span></div>
+        <div><span class="k">Education</span><span class="v">M.S. AI, UT Austin</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="eyebrow">experience</p>
+    <h2>Where I've built things</h2>
+    <div class="log">
+
+      <div class="entry">
+        <div class="entry-meta">Jan 2026 → present</div>
+        <h3 class="entry-title">Senior Software Engineer — Lead Level</h3>
+        <p class="entry-org">Rakuten Marketing · Celina, TX</p>
+        <ul>
+          <li>Customized CLAUDE.md configuration and authored multiple SKILLS.md files to create reusable Claude/Cursor skills that streamlined development workflows, enabling the product team to focus on feature development — now used as the base for a broader, org-wide rollout of this approach.</li>
+          <li>Used GitHub Copilot alongside Claude and Cursor as part of daily AI-assisted development.</li>
+          <li>Migrated select applications from Cloud Run to Kubernetes (K8s).</li>
+          <li>Worked on migrating marketplace order-processing applications (e.g., Shopee) to Go — my first project in the language.</li>
+          <li>Built merchant-onboarding features integrating Salesforce and Jira, including automated Jira ticket creation for the client launch process.</li>
+          <li>Resolved production issues and shipped Shopify integration features across multiple marketplace systems.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-meta">Mar 2021 → Dec 2025</div>
+        <h3 class="entry-title">Senior Catalog Engineer</h3>
+        <p class="entry-org">Rakuten Rewards — ShopStyle.com / Collective Voice · Celina, TX</p>
+        <p class="entry-subhead">Categorization &amp; ML Work</p>
+        <ul>
+          <li>Contributed to the design and upgrade of the product classification engine, helping replace legacy custom ML models with OpenAI (GPT-4) to improve accuracy and reduce maintenance overhead.</li>
+          <li>Designed and built a custom ML pipeline (AWS SageMaker) to categorize millions of products, improving prediction accuracy from 60% to 92%; fine-tuned and retrained the model weekly on refreshed catalog data, with a proprietary Human-in-the-Loop (HITL) feedback system to correct inferences during retraining.</li>
+          <li>Designed a Java-based microservices framework on AWS that ingested, normalized, and processed 500M+ SKUs across 1,000+ heterogeneous merchant feeds.</li>
+        </ul>
+
+        <p class="entry-subhead">Search</p>
+        <ul>
+          <li>Worked on implementation and enhancements to the catalog &amp; search platform across fashion and home retail verticals, building working knowledge of the underlying architecture along the way; introduced attribute schemas powering new search filters.</li>
+          <li>Indexed products into Elasticsearch, adding a number of new attributes to the index document and implementing search API changes to expose those attributes as navigation filters.</li>
+          <li>Worked on SEO content updates, including meta title and description information on search results pages.</li>
+        </ul>
+
+        <p class="entry-subhead">Creator Launch &amp; Bonus Program</p>
+        <ul>
+          <li>Implemented Platform Gating, bonus-program, and subscription-program systems for the creator platform.</li>
+          <li>Designed and developed a high-scale ingestion tool to capture social media content, leveraging AI to analyze and categorize influencers and power a searchable discovery platform for brand partners.</li>
+        </ul>
+
+        <p class="entry-subhead">Platform &amp; Data Engineering</p>
+        <ul>
+          <li>Integrated Feedonomics to standardize product-feed ingestion for launching new retailers onto the website.</li>
+          <li>Engineered high-volume MongoDB → PostgreSQL migrations and automated commission/billing-adjacent workflows.</li>
+          <li>Used GitHub Copilot alongside Claude and Cursor as part of daily AI-assisted development.</li>
+        </ul>
+      </div>
+
+      <div class="entry past">
+        <div class="entry-meta">Feb 2016 → Feb 2021</div>
+        <h3 class="entry-title">Senior Engineer Level 2 — Software Development &amp; Site Reliability Engineering</h3>
+        <p class="entry-org">Publicis Sapient (Client: JCPenney) · Plano, TX</p>
+        <p class="entry-subhead">Catalog &amp; Content Platform Migrations</p>
+        <ul>
+          <li>Migrated the product catalog from Oracle ATG to the cloud.</li>
+          <li>Participated in design discussions and implementation for migrating content management from ATG BCC to a new content management system.</li>
+          <li>Participated in design discussions and implementation, and supported the migration from Endeca Workbench to Solr from an SRE perspective, including generating the product feeds indexed into Solr.</li>
+          <li>Worked on migration of monolithic Oracle ATG systems to AWS-native microservices — including the browse API (Spring Microservices, Hazelcast, Cassandra) and pricing application (Spring Boot, Neo4j).</li>
+        </ul>
+
+        <p class="entry-subhead">Catalog Data &amp; Integration Pipelines</p>
+        <ul>
+          <li>Built category rule-group logic and TIBCO-based consumers — scaled to 10 parallel queues — to ingest and categorize SKUs/products arriving from the PIM system into the catalog, along with related inventory and pricing integrations.</li>
+          <li>Integrated pricing, item, inventory, and content management systems with the core catalog platform via ETL pipelines feeding data from upstream systems.</li>
+        </ul>
+
+        <p class="entry-subhead">SRE Tooling &amp; Production Support</p>
+        <ul>
+          <li>Built an internal SRE portal (microservices + Angular JS) with production tooling: catalog/pricing/inventory validation screens, an order-XML viewer, an Akamai cache-flush tool, and a SHIP TO STORE toggle.</li>
+          <li>Automated operational workflows with Python and a large number of batch scripts (catalog-to-pricing feed sync, Scene7 image-upload validation), many of which ran as jobs on an older mainframe system — worked closely with the mainframe team to get those jobs deployed — plus on-the-fly Java tools for cache validation and price/item corrections in production.</li>
+          <li>Built an ELK-based monitoring dashboard integrating Adobe, TIBCO, Splunk, JIRA, and BMC Remedy, replacing manual monitoring of production-critical services; created Splunk alerts and reports.</li>
+          <li>Supported A/B testing launches in production from an SRE perspective, monitoring rollout health and troubleshooting issues in real time.</li>
+        </ul>
+
+        <p class="entry-subhead">Incident Response &amp; Leadership</p>
+        <ul>
+          <li>Resolved JCPenney/Sephora integration issues across catalog, inventory, and order flows; led the Top-of-Funnel SRE team from onsite and a global, cross-functional engineering team of 6 (US/India), owning end-to-end resolution of high-severity production incidents under strict SLAs.</li>
+        </ul>
+      </div>
+
+      <div class="entry past">
+        <div class="entry-meta">Jan 2015 → Feb 2016</div>
+        <h3 class="entry-title">Senior ATG Developer / Team Lead</h3>
+        <p class="entry-org">Avani Technology Solutions (Client: TOMS.com) · Los Angeles, CA</p>
+        <ul>
+          <li>Architected and implemented a merchandising solution to resolve multi-site product/SKU customization issues, with a customized Search/Find function in BCC.</li>
+          <li>Integrated a product feed from SAP into ATG, added a QAS address-validation service, and built a new payment group to support a major customer program.</li>
+          <li>Customized the Customer Service Center (CSC) UI and launched TOMS' "Giving" pages, supporting the brand's one-for-one donation model.</li>
+          <li>Designed full-stack e-commerce applications on Oracle ATG and Endeca with global i18n support.</li>
+          <li>Coordinated knowledge transfer for the engagement and managed/mentored a development team of 8 engineers across the full SDLC.</li>
+        </ul>
+      </div>
+
+      <div class="entry past">
+        <div class="entry-meta">Nov 2012 → Dec 2014</div>
+        <h3 class="entry-title">ATG Developer</h3>
+        <p class="entry-org">Sapient Consulting (Client: JCPenney) · Bengaluru, India</p>
+        <ul>
+          <li>Joined the team migrating JCPenney's $1.6B+ e-commerce business onto Oracle ATG, serving as track lead/SME for the browse track across two major releases (.com and mobile).</li>
+          <li>Built the Product Details page and catalog repository integrations, and developed custom droplets/calculators to integrate 3rd-party pricing and promotions into the front end.</li>
+          <li>Owned BCC content administration and PIM import processes, syncing categories, products, and SKUs from external systems along with related inventory and pricing integrations, and resolved high/critical production issues.</li>
+          <li>Resolved issues and improved the process around multiple Oracle stored procedures used to categorize products in the catalog system.</li>
+          <li>Worked with ETL pipelines feeding product and catalog data into the platform from upstream systems.</li>
+        </ul>
+      </div>
+
+      <div class="entry past">
+        <div class="entry-meta">Oct 2010 → Nov 2012</div>
+        <h3 class="entry-title">Systems Engineer / ATG Developer</h3>
+        <p class="entry-org">Tata Consultancy Services (Clients: NII Holdings, Sprint/Nextel) · Chennai, India</p>
+        <ul>
+          <li>Started as a fresh graduate hire, ramping up on Java/J2EE and the ATG e-commerce framework on a cellular website revamp — my first project delivered in Agile.</li>
+          <li>Designed and developed profile management and self-care applications for NII Holdings' Latin American telecom e-commerce platform, including OIM-ATG integration, e-billing, and email functionality.</li>
+          <li>Led a 5-person module building reusable ATG components and customizing the Ofbiz e-commerce framework for telecom clients, training new joiners on both.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section id="expertise">
+    <p class="eyebrow">expertise</p>
+    <h2>Capability map</h2>
+    <div class="modgrid">
+
+      <div class="mod">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Backend &amp; Platform</span></div>
+        <div class="chips">
+          <span class="chip">Java</span><span class="chip">Python</span><span class="chip">Go</span>
+          <span class="chip">Spring Boot</span><span class="chip">Spring Cloud</span><span class="chip">GraphQL</span>
+          <span class="chip">Microservices</span><span class="chip">Gateway/Aggregator/CQRS Patterns</span>
+        </div>
+      </div>
+
+      <div class="mod">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">AI / ML Integration</span></div>
+        <div class="chips">
+          <span class="chip">LLM Integration</span><span class="chip">OpenAI</span><span class="chip">Claude</span>
+          <span class="chip">Prompt Engineering</span><span class="chip">SageMaker Fine-Tuning</span>
+        </div>
+      </div>
+
+      <div class="mod">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Cloud &amp; DevOps</span></div>
+        <div class="chips">
+          <span class="chip">AWS</span><span class="chip">GCP</span><span class="chip">Docker</span>
+          <span class="chip">Kubernetes</span><span class="chip">Terraform</span><span class="chip">CircleCI</span><span class="chip">Jenkins</span><span class="chip">Kinesis</span>
+        </div>
+      </div>
+
+      <div class="mod">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Search &amp; Catalog</span></div>
+        <div class="chips">
+          <span class="chip">Elasticsearch</span><span class="chip">Apache SOLR</span><span class="chip">Oracle Endeca</span>
+          <span class="chip">Relevance Tuning</span>
+        </div>
+      </div>
+
+      <div class="mod">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Data &amp; Persistence</span></div>
+        <div class="chips">
+          <span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">Cassandra</span>
+          <span class="chip">DynamoDB</span><span class="chip">Redis</span><span class="chip">Hazelcast</span><span class="chip">Neo4j</span>
+        </div>
+      </div>
+
+      <div class="mod">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Observability &amp; SRE</span></div>
+        <div class="chips">
+          <span class="chip">Datadog</span><span class="chip">Grafana</span><span class="chip">Splunk</span>
+          <span class="chip">Wily</span><span class="chip">ELK Stack</span><span class="chip">MTTR Reduction</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CASE STUDY -->
+  <section id="case-study">
+    <p class="eyebrow">case study</p>
+    <h2>Building an AI-native development workflow</h2>
+
+    <div class="cs-meta">
+      <span>Internal Reporting Platform</span>
+      <span>Spring Boot · Java · Kubernetes</span>
+      <span>Claude Code · Cursor</span>
+    </div>
+
+    <div class="cs-highlights">
+      <div class="hl"><p><strong>First AI-native project on the team:</strong> built almost entirely through Claude/Cursor "vibe coding" rather than hand-written code — no prior AI-dev conventions existed before this.</p></div>
+      <div class="hl"><p><strong>Replaced per-seat BI licensing:</strong> removed a licensed BI platform's embedded reporting (billed per user, regardless of usage) with an in-house Spring Boot service.</p></div>
+      <div class="hl"><p><strong>Self-service delivery workflow:</strong> Jira ticket → AI implementation → branch-based K8s preview → developer review → production, with full deploy automation as the next milestone.</p></div>
+      <div class="hl"><p><strong>Adopted org-wide:</strong> the CLAUDE.md/SKILLS.md pattern has since been picked up by 3 other teams, extended with Slack/Teams integrations.</p></div>
+    </div>
+
+    <div class="cs-accordion">
+
+      <details class="cs-block" open>
+        <summary>The Problem <span class="cs-sub">— why this project existed</span></summary>
+        <div class="cs-body">
+          <p>
+            Reporting for this platform ran entirely on a licensed BI tool, embedded into our internal application —
+            users were redirected to a page where we hosted the header/footer, and the BI tool rendered all report
+            content, fed by data from our big-data stores. Licensing was per-seat: if a client had 20 people using
+            the reports, we paid for 20 licenses regardless of actual usage. As the client base grew, so did the
+            bill, disconnected from the value we were actually delivering.
+          </p>
+          <p>
+            There was also no established AI-assisted development practice on the team before this — nothing shared,
+            nothing reusable. This was the first project where the goal was to work almost entirely through
+            AI-assisted ("vibe") coding rather than traditional hand-coding — prompting Claude and Cursor to
+            implement changes rather than writing most of the code by hand.
+          </p>
+        </div>
+      </details>
+
+      <details class="cs-block">
+        <summary>Constraints <span class="cs-sub">— what made it hard</span></summary>
+        <div class="cs-body">
+          <ul>
+            <li>Replace a paid, embedded BI tool without losing functionality clients already depended on.</li>
+            <li>No prior AI-dev conventions to build on — had to define the process from zero.</li>
+            <li>Needed a workflow reliable enough that AI-generated code could be trusted and reviewed efficiently, not just generated quickly.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="cs-block">
+        <summary>The Approach <span class="cs-sub">— how it works</span></summary>
+        <div class="cs-body">
+          <p>
+            Built the replacement as a Spring Boot/Java service, deployed initially on Cloud Run and later migrated
+            to Kubernetes as it matured.
+          </p>
+          <p>
+            The larger goal was a self-service development workflow: a user submits a Jira ticket describing the
+            change they want. Claude or Cursor implements it. The branch deploys automatically to a dedicated,
+            branch-based deployment pod on Kubernetes so the requester can review the result directly — no need to
+            wait for a full release cycle to see it working. Once they're satisfied, a developer (me) reviews the
+            code and promotes it to production.
+          </p>
+
+          <div class="cs-flow">
+            <div class="step"><div class="n">01</div><div class="t">Jira ticket describes the change</div></div>
+            <div class="arrow">→</div>
+            <div class="step"><div class="n">02</div><div class="t">Claude / Cursor implements it</div></div>
+            <div class="arrow">→</div>
+            <div class="step"><div class="n">03</div><div class="t">Auto-deploy to a branch-based pod (K8s)</div></div>
+            <div class="arrow">→</div>
+            <div class="step"><div class="n">04</div><div class="t">Requester reviews live, developer reviews code</div></div>
+            <div class="arrow">→</div>
+            <div class="step pending"><div class="n">05 · planned</div><div class="t">Automated production deploy</div></div>
+          </div>
+          <p class="cs-flow-caption">Steps 1–4 are live today. Step 5 is the next milestone.</p>
+
+          <p style="margin-top:18px;">
+            <code>CLAUDE.md</code> and a set of <code>SKILLS.md</code> files are the foundation making this
+            trustworthy: repo-wide context, layer-by-layer conventions, and two structured skills — one scaffolds a
+            full new feature end-to-end (ticket → implementation → automated code review → commit/PR), the other
+            handles the far more common case of adding a parameter to an existing endpoint. Both let a requester
+            choose their depth of involvement, from plain-English descriptions to exact class-level specs.
+          </p>
+        </div>
+      </details>
+
+      <details class="cs-block">
+        <summary>Outcome <span class="cs-sub">— what happened</span></summary>
+        <div class="cs-body">
+          <p>
+            The service replaced the BI platform's core reporting function. The CLAUDE.md/SKILLS.md pattern was
+            adopted organically by three other teams, who've extended it with skills integrating into Slack and
+            Teams. The branch-per-ticket review workflow is live; full production auto-deployment is the next
+            milestone.
+          </p>
+        </div>
+      </details>
+
+      <details class="cs-block">
+        <summary>Retrospective <span class="cs-sub">— what I'd tell someone starting this today</span></summary>
+        <div class="cs-body">
+          <p>
+            The biggest shift in how I think about this work: <strong style="color:var(--text)">prompting is the
+            actual skill, not a shortcut around one.</strong> Early on I treated the CLAUDE.md/SKILLS.md files as
+            documentation — write it once, done. What I've learned is that a skill is only as good as the prompt
+            driving it; the same SKILLS.md file produces very different output depending on how precisely the
+            request is framed. The tiered-depth approach (plain English vs. exact class names) exists because of
+            this — an admission that vague prompts need more AI judgment calls, which means more risk, so the
+            workflow makes that tradeoff explicit rather than assuming one prompting style fits everyone.
+          </p>
+          <div class="cs-callout">
+            <strong>AI-generated code isn't always ship-ready.</strong> It hallucinates — confidently generating
+            code that references methods, patterns, or conventions that don't actually exist in the codebase.
+            That's exactly why review isn't optional in this workflow; every AI-authored change gets reviewed by a
+            developer before reaching production, and that review has caught real issues, not just style nits.
+          </div>
+          <div class="cs-callout">
+            <strong>Context size is a real, recurring constraint.</strong> On a codebase this size, how much
+            relevant context fits in the window directly affects output quality — too little and the AI misses
+            established patterns; too much and signal gets diluted. This is part of why CLAUDE.md points to smaller,
+            focused rule files instead of one giant document — right-sizing what gets loaded per task, rather than
+            assuming more context is always better.
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <p class="eyebrow">credentials</p>
+
+    <h2>Certifications</h2>
+    <div class="certgrid">
+
+      <div class="certcard">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Applied AI &amp; Machine Learning</span></div>
+        <div class="certlist">
+          <div class="certitem">
+            <div class="cname">AI in Healthcare</div>
+            <div class="cmeta">University of Texas at Austin · May 2026</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Claude Code in Action</div>
+            <div class="cmeta">Anthropic · Mar 2026</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Ethics in AI</div>
+            <div class="cmeta">University of Texas at Austin · Jan 2026</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Advances in Deep Learning</div>
+            <div class="cmeta">University of Texas at Austin · May 2025</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Deep Learning</div>
+            <div class="cmeta">University of Texas at Austin · Dec 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="certcard">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Cloud Infrastructure (GCP)</span></div>
+        <div class="certlist">
+          <div class="certitem">
+            <div class="cname">Cloud Engineering with Google Cloud Specialization</div>
+            <div class="cmeta">Coursera · May 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Preparing for the Google Cloud Associate Cloud Engineer Exam</div>
+            <div class="cmeta">Coursera · May 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Elastic Google Cloud Infrastructure: Scaling and Automation</div>
+            <div class="cmeta">Coursera · Apr 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Essential Google Cloud Infrastructure: Core Services</div>
+            <div class="cmeta">Coursera · Apr 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Essential Google Cloud Infrastructure: Foundation</div>
+            <div class="cmeta">Coursera · Apr 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Google Cloud Platform Fundamentals: Core Infrastructure</div>
+            <div class="cmeta">Coursera · Apr 2020</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="certcard">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Backend Architecture &amp; Data</span></div>
+        <div class="certlist">
+          <div class="certitem">
+            <div class="cname">Reactive Architecture: Domain-Driven Design - Level 2</div>
+            <div class="cmeta">Akka · Jun 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Reactive Architecture: Introduction to Reactive Systems - Level 2</div>
+            <div class="cmeta">Akka · May 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Principles of Reactive Architecture</div>
+            <div class="cmeta">IBM · Apr 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Spark - Level 1</div>
+            <div class="cmeta">IBM · May 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Docker Essentials: A Developer Introduction</div>
+            <div class="cmeta">IBM · May 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">JDK 8: Lambdas and Streams Introduction</div>
+            <div class="cmeta">Oracle · May 2020</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Neo4j Certified Professional</div>
+            <div class="cmeta">Neo4j · Oct 2019</div>
+          </div>
+          <div class="certitem">
+            <div class="cname">Spring Boot 2 Essential Training</div>
+            <div class="cmeta">Lynda.com · Jul 2019</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="certcard">
+        <div class="mod-head"><span class="mod-icon"></span><span class="mod-title">Front-End</span></div>
+        <div class="certlist">
+          <div class="certitem">
+            <div class="cname">Learning React.js</div>
+            <div class="cmeta">Lynda.com · Jun 2019</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RESUMES
+
+  <section id="resumes">
+    <p class="eyebrow">downloads</p>
+    <h2>Role-tailored resumes</h2>
+    <div class="resumegrid">
+
+      <div class="rescard">
+        <span class="tag">Backend · Applied AI</span>
+        <h3>FICO — Senior/Lead Backend Engineer</h3>
+        <p>Tailored for backend + data pipeline roles integrating LLMs into production decisioning systems.</p>
+        <div class="links">
+          <a href="Naveen_Gundu_Resume_FICO.pdf" target="_blank">View PDF ↗</a>
+          <a href="Naveen_Gundu_Resume_FICO.docx" download>Download .docx</a>
+        </div>
+      </div>
+
+      <div class="rescard">
+        <span class="tag">Platform · AI Tooling</span>
+        <h3>Hims &amp; Hers — Staff Software Engineer</h3>
+        <p>Tailored for subscription/lifecycle platform work and AI-assisted engineering leadership.</p>
+        <div class="links">
+          <a href="Naveen_Gundu_Resume_HimsHers.pdf" target="_blank">View PDF ↗</a>
+          <a href="Naveen_Gundu_Resume_HimsHers.docx" download>Download .docx</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  -->
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="eyebrow">credentials</p>
+    <h2>Education</h2>
+    <div class="edu-row">
+      <div>
+        <div class="edu-title">Master of Science in Artificial Intelligence</div>
+        <div class="edu-sub">University of Texas at Austin</div>
+      </div>
+      <div class="edu-tag">in progress</div>
+    </div>
+    <div class="edu-row">
+      <div>
+        <div class="edu-title">Bachelor of Technology, Computer Science &amp; Engineering</div>
+        <div class="edu-sub">Jawaharlal Nehru Technological University, India</div>
+      </div>
+      <div class="edu-tag">2010</div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="contact-panel">
+      <p class="eyebrow" style="justify-content:center; display:flex;">get in touch</p>
+      <h2>Let's talk about your backend problems.</h2>
+      <p>Open to Staff / Senior / Lead backend and applied-AI engineering roles. Response SLA: under 24 hours.</p>
+      <div class="contact-links">
+        <a class="btn primary" href="mailto:snvnaveenkumarg@gmail.com">snvnaveenkumarg@gmail.com</a>
+        <a class="btn ghost" href="tel:+12485504360">+1 (248) 550-4360</a>
+        <a class="btn ghost" href="https://linkedin.com/in/naveen-gundu" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </div>
+    <p class="footnote">© Naveen Kumar Gundu · Celina, TX</p>
+  </div>
+</footer>
+
+</body>
+</html>
